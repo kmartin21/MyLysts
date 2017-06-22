@@ -1,0 +1,821 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CF05686E0D86B8A79C4ED60 /* Pods_MyLystsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4528D6FC2E73F9CCE9EAE98F /* Pods_MyLystsTests.framework */; };
+		2EA7E9853CB7925872D06223 /* Pods_MyLysts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 420295FE6676FD2B12E3997C /* Pods_MyLysts.framework */; };
+		BF7C5135712B3D4BCE9ED770 /* Pods_MyLystsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7454291C29C89A40BE1ADC6C /* Pods_MyLystsUITests.framework */; };
+		E5D33EC51EFB43E4001D9480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EC41EFB43E4001D9480 /* AppDelegate.swift */; };
+		E5D33EC71EFB43E4001D9480 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EC61EFB43E4001D9480 /* LoginViewController.swift */; };
+		E5D33ECC1EFB43E4001D9480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D33ECB1EFB43E4001D9480 /* Assets.xcassets */; };
+		E5D33ECF1EFB43E4001D9480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D33ECD1EFB43E4001D9480 /* LaunchScreen.storyboard */; };
+		E5D33EDA1EFB43E4001D9480 /* MyLystsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33ED91EFB43E4001D9480 /* MyLystsTests.swift */; };
+		E5D33EE51EFB43E4001D9480 /* MyLystsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EE41EFB43E4001D9480 /* MyLystsUITests.swift */; };
+		E5D33EF51EFB500B001D9480 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EF41EFB500B001D9480 /* LoginView.swift */; };
+		E5D33EF91EFB54D7001D9480 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EF81EFB54D7001D9480 /* Text.swift */; };
+		E5D33EFB1EFB54F8001D9480 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33EFA1EFB54F8001D9480 /* Color.swift */; };
+		E5D33EFD1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5D33EFC1EFB82EB001D9480 /* GoogleService-Info.plist */; };
+		E5D33EFE1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5D33EFC1EFB82EB001D9480 /* GoogleService-Info.plist */; };
+		E5D33EFF1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5D33EFC1EFB82EB001D9480 /* GoogleService-Info.plist */; };
+		E5D33F0B1EFB91AE001D9480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33F0A1EFB91AE001D9480 /* ViewController.swift */; };
+		E5D33F0C1EFB91AE001D9480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33F0A1EFB91AE001D9480 /* ViewController.swift */; };
+		E5D33F0D1EFB91AE001D9480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33F0A1EFB91AE001D9480 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E5D33ED61EFB43E4001D9480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5D33EB91EFB43E4001D9480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5D33EC01EFB43E4001D9480;
+			remoteInfo = MyLysts;
+		};
+		E5D33EE11EFB43E4001D9480 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5D33EB91EFB43E4001D9480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5D33EC01EFB43E4001D9480;
+			remoteInfo = MyLysts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		420295FE6676FD2B12E3997C /* Pods_MyLysts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyLysts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4528D6FC2E73F9CCE9EAE98F /* Pods_MyLystsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyLystsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		472F7F696E0A7A0DB1DA3E1B /* Pods-MyLystsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLystsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLystsUITests/Pods-MyLystsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7454291C29C89A40BE1ADC6C /* Pods_MyLystsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyLystsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DA384CE42FC7073FF9ED49C /* Pods-MyLystsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLystsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLystsTests/Pods-MyLystsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DEE2FBFA94D88AFE5F126E26 /* Pods-MyLystsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLystsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLystsUITests/Pods-MyLystsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E12BA20641E866E3F29439E6 /* Pods-MyLystsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLystsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLystsTests/Pods-MyLystsTests.release.xcconfig"; sourceTree = "<group>"; };
+		E5D33EC11EFB43E4001D9480 /* MyLysts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLysts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D33EC41EFB43E4001D9480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E5D33EC61EFB43E4001D9480 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E5D33ECB1EFB43E4001D9480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E5D33ECE1EFB43E4001D9480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E5D33ED01EFB43E4001D9480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5D33ED51EFB43E4001D9480 /* MyLystsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLystsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D33ED91EFB43E4001D9480 /* MyLystsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLystsTests.swift; sourceTree = "<group>"; };
+		E5D33EDB1EFB43E4001D9480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5D33EE01EFB43E4001D9480 /* MyLystsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLystsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D33EE41EFB43E4001D9480 /* MyLystsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLystsUITests.swift; sourceTree = "<group>"; };
+		E5D33EE61EFB43E4001D9480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5D33EF41EFB500B001D9480 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		E5D33EF81EFB54D7001D9480 /* Text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		E5D33EFA1EFB54F8001D9480 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E5D33EFC1EFB82EB001D9480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5D33F001EFB84AB001D9480 /* MyLysts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLysts-Bridging-Header.h"; sourceTree = "<group>"; };
+		E5D33F011EFB84AB001D9480 /* MyLystsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLystsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		E5D33F021EFB84AB001D9480 /* MyLystsUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLystsUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		E5D33F0A1EFB91AE001D9480 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED0DCA3DE4EEB106998C2FA8 /* Pods-MyLysts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLysts.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts.release.xcconfig"; sourceTree = "<group>"; };
+		F1E7678530BAAF57908B5497 /* Pods-MyLysts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLysts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E5D33EBE1EFB43E4001D9480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EA7E9853CB7925872D06223 /* Pods_MyLysts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33ED21EFB43E4001D9480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CF05686E0D86B8A79C4ED60 /* Pods_MyLystsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33EDD1EFB43E4001D9480 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7C5135712B3D4BCE9ED770 /* Pods_MyLystsUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15FCCB321439AC7096E3F260 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1E7678530BAAF57908B5497 /* Pods-MyLysts.debug.xcconfig */,
+				ED0DCA3DE4EEB106998C2FA8 /* Pods-MyLysts.release.xcconfig */,
+				7DA384CE42FC7073FF9ED49C /* Pods-MyLystsTests.debug.xcconfig */,
+				E12BA20641E866E3F29439E6 /* Pods-MyLystsTests.release.xcconfig */,
+				DEE2FBFA94D88AFE5F126E26 /* Pods-MyLystsUITests.debug.xcconfig */,
+				472F7F696E0A7A0DB1DA3E1B /* Pods-MyLystsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		181ACDAFAA4F59BB6B8521EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				420295FE6676FD2B12E3997C /* Pods_MyLysts.framework */,
+				4528D6FC2E73F9CCE9EAE98F /* Pods_MyLystsTests.framework */,
+				7454291C29C89A40BE1ADC6C /* Pods_MyLystsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5D33EB81EFB43E4001D9480 = {
+			isa = PBXGroup;
+			children = (
+				E5D33EC31EFB43E4001D9480 /* MyLysts */,
+				E5D33ED81EFB43E4001D9480 /* MyLystsTests */,
+				E5D33EE31EFB43E4001D9480 /* MyLystsUITests */,
+				E5D33EC21EFB43E4001D9480 /* Products */,
+				15FCCB321439AC7096E3F260 /* Pods */,
+				181ACDAFAA4F59BB6B8521EE /* Frameworks */,
+				E5D33F001EFB84AB001D9480 /* MyLysts-Bridging-Header.h */,
+				E5D33F011EFB84AB001D9480 /* MyLystsTests-Bridging-Header.h */,
+				E5D33F021EFB84AB001D9480 /* MyLystsUITests-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		E5D33EC21EFB43E4001D9480 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EC11EFB43E4001D9480 /* MyLysts.app */,
+				E5D33ED51EFB43E4001D9480 /* MyLystsTests.xctest */,
+				E5D33EE01EFB43E4001D9480 /* MyLystsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E5D33EC31EFB43E4001D9480 /* MyLysts */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33F091EFB8B04001D9480 /* Models */,
+				E5D33EF21EFB4F93001D9480 /* Views */,
+				E5D33F081EFB8AFD001D9480 /* Controllers */,
+				E5D33F071EFB8AF0001D9480 /* Networking */,
+				E5D33EF61EFB548F001D9480 /* Utils */,
+				E5D33EC41EFB43E4001D9480 /* AppDelegate.swift */,
+				E5D33ECB1EFB43E4001D9480 /* Assets.xcassets */,
+				E5D33ECD1EFB43E4001D9480 /* LaunchScreen.storyboard */,
+				E5D33EFC1EFB82EB001D9480 /* GoogleService-Info.plist */,
+				E5D33ED01EFB43E4001D9480 /* Info.plist */,
+			);
+			path = MyLysts;
+			sourceTree = "<group>";
+		};
+		E5D33ED81EFB43E4001D9480 /* MyLystsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33ED91EFB43E4001D9480 /* MyLystsTests.swift */,
+				E5D33EDB1EFB43E4001D9480 /* Info.plist */,
+			);
+			path = MyLystsTests;
+			sourceTree = "<group>";
+		};
+		E5D33EE31EFB43E4001D9480 /* MyLystsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EE41EFB43E4001D9480 /* MyLystsUITests.swift */,
+				E5D33EE61EFB43E4001D9480 /* Info.plist */,
+			);
+			path = MyLystsUITests;
+			sourceTree = "<group>";
+		};
+		E5D33EF21EFB4F93001D9480 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EF41EFB500B001D9480 /* LoginView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E5D33EF61EFB548F001D9480 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EF71EFB5498001D9480 /* Design */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		E5D33EF71EFB5498001D9480 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EF81EFB54D7001D9480 /* Text.swift */,
+				E5D33EFA1EFB54F8001D9480 /* Color.swift */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		E5D33F071EFB8AF0001D9480 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		E5D33F081EFB8AFD001D9480 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5D33EC61EFB43E4001D9480 /* LoginViewController.swift */,
+				E5D33F0A1EFB91AE001D9480 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E5D33F091EFB8B04001D9480 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E5D33EC01EFB43E4001D9480 /* MyLysts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5D33EE91EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLysts" */;
+			buildPhases = (
+				273079F620FB83D28DA24A31 /* [CP] Check Pods Manifest.lock */,
+				E5D33EBD1EFB43E4001D9480 /* Sources */,
+				E5D33EBE1EFB43E4001D9480 /* Frameworks */,
+				E5D33EBF1EFB43E4001D9480 /* Resources */,
+				C0E91CF6F8B2E54FEF33004C /* [CP] Embed Pods Frameworks */,
+				4D3C1F857790263D27DD9A67 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyLysts;
+			productName = MyLysts;
+			productReference = E5D33EC11EFB43E4001D9480 /* MyLysts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E5D33ED41EFB43E4001D9480 /* MyLystsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5D33EEC1EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLystsTests" */;
+			buildPhases = (
+				3FCAAA13076D911DDC954D48 /* [CP] Check Pods Manifest.lock */,
+				E5D33ED11EFB43E4001D9480 /* Sources */,
+				E5D33ED21EFB43E4001D9480 /* Frameworks */,
+				E5D33ED31EFB43E4001D9480 /* Resources */,
+				1D26262BC71182C172285961 /* [CP] Embed Pods Frameworks */,
+				FB0362B19D77CB814EEC040D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5D33ED71EFB43E4001D9480 /* PBXTargetDependency */,
+			);
+			name = MyLystsTests;
+			productName = MyLystsTests;
+			productReference = E5D33ED51EFB43E4001D9480 /* MyLystsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E5D33EDF1EFB43E4001D9480 /* MyLystsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5D33EEF1EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLystsUITests" */;
+			buildPhases = (
+				585994EB95C1A7DF63011DA2 /* [CP] Check Pods Manifest.lock */,
+				E5D33EDC1EFB43E4001D9480 /* Sources */,
+				E5D33EDD1EFB43E4001D9480 /* Frameworks */,
+				E5D33EDE1EFB43E4001D9480 /* Resources */,
+				297E067AC2C90B3E33276AE1 /* [CP] Embed Pods Frameworks */,
+				7CD92C3794C2865D64A9DDD1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E5D33EE21EFB43E4001D9480 /* PBXTargetDependency */,
+			);
+			name = MyLystsUITests;
+			productName = MyLystsUITests;
+			productReference = E5D33EE01EFB43E4001D9480 /* MyLystsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E5D33EB91EFB43E4001D9480 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Keith Martin";
+				TargetAttributes = {
+					E5D33EC01EFB43E4001D9480 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = XX2G6SA24K;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					E5D33ED41EFB43E4001D9480 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = XX2G6SA24K;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E5D33EC01EFB43E4001D9480;
+					};
+					E5D33EDF1EFB43E4001D9480 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = XX2G6SA24K;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E5D33EC01EFB43E4001D9480;
+					};
+				};
+			};
+			buildConfigurationList = E5D33EBC1EFB43E4001D9480 /* Build configuration list for PBXProject "MyLysts" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E5D33EB81EFB43E4001D9480;
+			productRefGroup = E5D33EC21EFB43E4001D9480 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5D33EC01EFB43E4001D9480 /* MyLysts */,
+				E5D33ED41EFB43E4001D9480 /* MyLystsTests */,
+				E5D33EDF1EFB43E4001D9480 /* MyLystsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5D33EBF1EFB43E4001D9480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33ECF1EFB43E4001D9480 /* LaunchScreen.storyboard in Resources */,
+				E5D33ECC1EFB43E4001D9480 /* Assets.xcassets in Resources */,
+				E5D33EFD1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33ED31EFB43E4001D9480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33EFE1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33EDE1EFB43E4001D9480 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33EFF1EFB82EB001D9480 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D26262BC71182C172285961 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLystsTests/Pods-MyLystsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		273079F620FB83D28DA24A31 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		297E067AC2C90B3E33276AE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLystsUITests/Pods-MyLystsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FCAAA13076D911DDC954D48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4D3C1F857790263D27DD9A67 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		585994EB95C1A7DF63011DA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7CD92C3794C2865D64A9DDD1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLystsUITests/Pods-MyLystsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0E91CF6F8B2E54FEF33004C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB0362B19D77CB814EEC040D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyLystsTests/Pods-MyLystsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E5D33EBD1EFB43E4001D9480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33F0B1EFB91AE001D9480 /* ViewController.swift in Sources */,
+				E5D33EF51EFB500B001D9480 /* LoginView.swift in Sources */,
+				E5D33EF91EFB54D7001D9480 /* Text.swift in Sources */,
+				E5D33EC71EFB43E4001D9480 /* LoginViewController.swift in Sources */,
+				E5D33EFB1EFB54F8001D9480 /* Color.swift in Sources */,
+				E5D33EC51EFB43E4001D9480 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33ED11EFB43E4001D9480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33F0C1EFB91AE001D9480 /* ViewController.swift in Sources */,
+				E5D33EDA1EFB43E4001D9480 /* MyLystsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5D33EDC1EFB43E4001D9480 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D33F0D1EFB91AE001D9480 /* ViewController.swift in Sources */,
+				E5D33EE51EFB43E4001D9480 /* MyLystsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E5D33ED71EFB43E4001D9480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5D33EC01EFB43E4001D9480 /* MyLysts */;
+			targetProxy = E5D33ED61EFB43E4001D9480 /* PBXContainerItemProxy */;
+		};
+		E5D33EE21EFB43E4001D9480 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E5D33EC01EFB43E4001D9480 /* MyLysts */;
+			targetProxy = E5D33EE11EFB43E4001D9480 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E5D33ECD1EFB43E4001D9480 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5D33ECE1EFB43E4001D9480 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E5D33EE71EFB43E4001D9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E5D33EE81EFB43E4001D9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E5D33EEA1EFB43E4001D9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1E7678530BAAF57908B5497 /* Pods-MyLysts.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLysts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLysts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLysts-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E5D33EEB1EFB43E4001D9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0DCA3DE4EEB106998C2FA8 /* Pods-MyLysts.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLysts/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLysts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLysts-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E5D33EED1EFB43E4001D9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DA384CE42FC7073FF9ED49C /* Pods-MyLystsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLystsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLystsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLystsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyLysts.app/MyLysts";
+			};
+			name = Debug;
+		};
+		E5D33EEE1EFB43E4001D9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E12BA20641E866E3F29439E6 /* Pods-MyLystsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLystsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLystsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLystsTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyLysts.app/MyLysts";
+			};
+			name = Release;
+		};
+		E5D33EF01EFB43E4001D9480 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE2FBFA94D88AFE5F126E26 /* Pods-MyLystsUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLystsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLystsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLystsUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MyLysts;
+			};
+			name = Debug;
+		};
+		E5D33EF11EFB43E4001D9480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 472F7F696E0A7A0DB1DA3E1B /* Pods-MyLystsUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = XX2G6SA24K;
+				INFOPLIST_FILE = MyLystsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.keithmartin.MyLystsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyLystsUITests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = MyLysts;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E5D33EBC1EFB43E4001D9480 /* Build configuration list for PBXProject "MyLysts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D33EE71EFB43E4001D9480 /* Debug */,
+				E5D33EE81EFB43E4001D9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5D33EE91EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLysts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D33EEA1EFB43E4001D9480 /* Debug */,
+				E5D33EEB1EFB43E4001D9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5D33EEC1EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLystsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D33EED1EFB43E4001D9480 /* Debug */,
+				E5D33EEE1EFB43E4001D9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5D33EEF1EFB43E4001D9480 /* Build configuration list for PBXNativeTarget "MyLystsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D33EF01EFB43E4001D9480 /* Debug */,
+				E5D33EF11EFB43E4001D9480 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E5D33EB91EFB43E4001D9480 /* Project object */;
+}
