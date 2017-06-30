@@ -20,9 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
         
-        // Override point for customization after application launch.
-        window?.makeKeyAndVisible()
-        window?.rootViewController = LoginViewController()
+        GIDSignIn.sharedInstance().clientID = "1080273992297-bl7rgf3chvqjsilm9b1eudkmgbt0gleb.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().serverClientID = "1080273992297-m2n0djmmru3hr3q3b209cj86ti46cge2.apps.googleusercontent.com"
+        
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            window?.makeKeyAndVisible()
+            //let defaults = UserDefaults.standard
+            //User.currentUser = User(dictionary: ["username": defaults.string(forKey: DefaultsKeys.username)!])
+            let rootViewController = UINavigationController(rootViewController: PageViewController())
+            rootViewController.view.backgroundColor = Color.white
+            window?.rootViewController = rootViewController
+        } else {
+            let loginViewController = LoginViewController()
+            let rootViewController = UINavigationController(rootViewController: loginViewController)
+            rootViewController.view.backgroundColor = Color.white
+            window?.makeKeyAndVisible()
+            window?.rootViewController = rootViewController
+        }
         
         return true
     }

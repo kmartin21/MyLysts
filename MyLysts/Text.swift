@@ -16,10 +16,11 @@ struct TextFont {
     static var inputNormal: UIFont = UIFont(name: TextFont.normal, size: TextSize.medium)!;
     
     static var headingSmall: UIFont = UIFont(name: TextFont.normalBold, size: TextSize.tinier1)!
-    static var descriptionNormal: UIFont = UIFont(name: TextFont.normal, size: TextSize.small)!;
-    static var descriptionSmall: UIFont = UIFont(name: TextFont.normal, size: TextSize.tiny)!;
-    static var descriptionTiny: UIFont = UIFont(name: TextFont.normal, size: TextSize.tinier1)!;
-    static var metaNormal: UIFont = UIFont(name: TextFont.normal, size: TextSize.tinier2)!;
+    static var headingMedium: UIFont = UIFont(name: TextFont.normalBold, size: TextSize.normal)!
+    static var descriptionNormal: UIFont = UIFont(name: TextFont.normal, size: TextSize.small)!
+    static var descriptionSmall: UIFont = UIFont(name: TextFont.normal, size: TextSize.tiny)!
+    static var descriptionTiny: UIFont = UIFont(name: TextFont.normal, size: TextSize.tinier1)!
+    static var metaNormal: UIFont = UIFont(name: TextFont.normal, size: TextSize.tinier2)!
     static var descriptionHeader:UIFont = UIFont(name: TextFont.normal, size: TextSize.normal)!
     static var metaSmallBold: UIFont = UIFont(name: TextFont.normalBold, size: TextSize.tinier3)!
     
