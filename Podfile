@@ -7,6 +7,8 @@ target 'MyLysts' do
 
   # Pods for MyLysts
   pod 'Google/SignIn'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 
   target 'MyLystsTests' do
     inherit! :search_paths

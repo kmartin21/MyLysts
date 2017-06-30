@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AllListsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        navigationController?.navigationBar.isHidden = false
         
         let logoutLabel = UIButton()
         logoutLabel.setTitleColor(.black, for: .normal)
@@ -32,6 +34,8 @@ class ViewController: UIViewController {
     
     func logoutButtonTapped(sender: UIButton) {
         GIDSignIn.sharedInstance().signOut()
-        dismiss(animated: true, completion: nil)
+        
+        let loginViewController = LoginViewController()
+        self.navigationController?.setViewControllers([loginViewController], animated: true)
     }
 }

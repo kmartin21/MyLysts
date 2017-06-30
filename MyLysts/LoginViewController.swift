@@ -11,6 +11,16 @@ import UIKit
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     private var loginView: LoginView!
+    private let viewModel: LoginViewModel
+    
+    init() {
+        viewModel = LoginViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +29,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().uiDelegate = self
 
         createUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,29 +52,27 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-            //let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            ///http://mylysts.com/i/user/login/google/p8q937b32y2ef8sdyg
-            
-//            let fullName = user.profile.name
-//            let givenName = user.profile.givenName
-//            let familyName = user.profile.familyName
-//            let email = user.profile.email
-            // ...
-        } else {
-            print("\(error.localizedDescription)")
+        guard error == nil else {
+            print(error.localizedDescription)
+            return
+        }
+
+        let accessToken = user.serverAuthCode!
+        viewModel.loginUser(accessToken: accessToken) { (result, error) in
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+                let vc = PageViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
-        present(viewController, animated: true, completion: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        dismiss(animated: true, completion: nil)
-        present(ViewController(), animated: false, completion: nil)
+        
     }
     
 }
