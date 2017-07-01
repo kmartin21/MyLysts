@@ -13,7 +13,7 @@ class UserListsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = Color.white
     }
 
     override func didReceiveMemoryWarning() {
