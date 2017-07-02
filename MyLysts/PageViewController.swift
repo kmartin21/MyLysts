@@ -44,7 +44,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     }
     
     func createUI() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = Color.white
         
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
@@ -55,7 +55,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         newListButton.setImage(UIImage(named: "new_list"), for: .normal)
         searchButton.setImage(UIImage(named: "search"), for: .normal)
         profileImageButton.setImage(UIImage(named: "profile_pic"), for: .normal)
-        profileImageButton.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        profileImageButton.imageView?.contentMode = .scaleAspectFit
         profileImageButton.layer.cornerRadius = 0.5 * (navigationController!.navigationBar.frame.height/1.5)
         profileImageButton.clipsToBounds = true
         
@@ -64,7 +64,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         navBar?.addSubview(newListButton)
         navBar?.addSubview(searchButton)
         navBar?.addSubview(profileImageButton)
-        navBar?.backgroundColor = Color.navBarColor
+        navBar?.barTintColor = Color.backgroundGrey
         navBar?.isTranslucent = false
         
         pageControl.delegate = self
@@ -106,6 +106,8 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     func setViewControllers() {
         let width = view.frame.width
         let height = view.frame.height
+        let navBarHeight = navigationController?.navigationBar.frame.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
         let viewControllers = [AllListsViewController(), UserListsViewController()]
         
@@ -114,8 +116,8 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         for viewController in viewControllers {
             addChildViewController(viewController)
             let originX: CGFloat = CGFloat(index) * width
-            
-            viewController.view.frame = CGRect(x: originX, y: 0, width: width, height: height)
+
+            viewController.view.frame = CGRect(x: originX, y: 0, width: width, height: height - (navBarHeight! + statusBarHeight))
             scrollView.addSubview(viewController.view)
             viewController.didMove(toParentViewController: self)
             index += 1

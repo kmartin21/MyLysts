@@ -61,8 +61,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         viewModel.loginUser(accessToken: accessToken) { (result, error) in
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
-                let vc = PageViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                let pageViewController = PageViewController()
+                self.navigationController?.pushViewController(pageViewController, animated: true)
             }
         }
     }

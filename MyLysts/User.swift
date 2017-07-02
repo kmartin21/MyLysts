@@ -25,9 +25,9 @@ class User {
     }
 }
 
-extension User {
-    static let login = Resource<[ListItem]>(url: URL(string: "http://www.mylysts.com/api/i/user/login/google?apiKey=p8q937b32y2ef8sdyg")!, parseJSON: { json in
-        guard let dictionaries = json as? [JSONDictionary] else { return nil }
-        return dictionaries.flatMap(ListItem.init)
-    })
-}
+//extension User {
+//    static let login = Resource<[ListItem]>(url: URL(string: "http://www.mylysts.com/api/i/user/login/google?apiKey=p8q937b32y2ef8sdyg")!, parseJSON: { json in
+//        guard let dictionaries = json as? [JSONDictionary] else { return nil }
+//        return dictionaries.flatMap(ListItem.init)
+//    })
+//}

@@ -10,39 +10,29 @@ import Foundation
 
 struct ListItem {
     
-    fileprivate let image: UIImage?
-    fileprivate let title: String
-    fileprivate let description: String
-    fileprivate let author: String
-    fileprivate let numViews: Int
-    fileprivate let numLinks: Int?
-    fileprivate let numLists: Int?
+    let imageURL: String?
+    let title: String
+    let description: String
+    let author: String
+    let numViews: Int
+    let numLinks: Int?
+    let numLists: Int?
     
 }
 
 extension ListItem: JSONDecodable {
     
-    init?(dictionary: JSONDictionary) {
-        guard let values = dictionary["values"] as? JSONDictionary,
-            let userId = values["userId"] as? String,
-            let references = dictionary["references"] as? JSONDictionary,
+    init?(value: JSONDictionary, references: JSONDictionary) {
+        guard let userId = value["userId"] as? String,
             let users = references["users"] as? JSONDictionary,
-            let itemCounts = dictionary["itemCounts"] as? JSONDictionary else { return nil }
-        
-        self.image = UIImage()
-        self.title = values["title"] as? String ?? ""
-        self.description = values["description"] as? String ?? ""
+            let itemCounts = value["itemCounts"] as? JSONDictionary else { return nil }
+        self.imageURL = value["imageUrl"] as? String
+        self.title = value["title"] as? String ?? ""
+        self.description = value["description"] as? String ?? ""
         self.author = (users[userId]! as! JSONDictionary)["username"] as! String
-        self.numViews = values["numViews"] as! Int
-        self.numLinks = itemCounts["numLinks"] as? Int
-        self.numLists = itemCounts["numViews"] as? Int
+        self.numViews = value["numViews"] as! Int
+        self.numLinks = itemCounts["links"] as? Int
+        self.numLists = itemCounts["lists"] as? Int
     }
     
-}
-
-extension ListItem {
-    static let all = Resource<[ListItem]>(url: URL(string: "http://www.mylysts.com/api/i/list/public?apiKey=p8q937b32y2ef8sdyg&accessToken=")!, parseJSON: { json in
-        guard let dictionaries = json as? [JSONDictionary] else { return nil }
-        return dictionaries.flatMap(ListItem.init)
-    })
 }
