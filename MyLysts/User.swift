@@ -7,27 +7,36 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 class User {
-    public static var currentUser: User?
+    static var currentUser: User?
+    let username: String
+    let profileImageUrl: String
     
-    public let username: String
-    
-    public init?(dictionary: [String : Any]) {
+    init?(dictionary: [String : Any]) {
         
-        guard let username = dictionary["username"] as? String
-            else { return nil }
+        guard let accessToken = dictionary["accessToken"] as? JSONDictionary,
+              let token = accessToken["token"] as? String,
+              let user = dictionary["user"] as? JSONDictionary,
+              let userId = user["id"] as? String,
+              let username = user["username"] as? String,
+              let profileImageURL = user["imageUrl"] as? String
+              else { return nil }
         
-        self.username = username
-        
+        KeychainWrapper.standard.set(token, forKey:  KeychainKeys.accessToken)
+        KeychainWrapper.standard.set(userId, forKey: KeychainKeys.userId)
         let defaults = UserDefaults.standard
+        self.username = username
+        self.profileImageUrl = profileImageURL
         defaults.set(username, forKey: DefaultsKeys.username)
+        defaults.set(profileImageURL, forKey: DefaultsKeys.profileImageUrl)
+    }
+    
+    init() {
+        self.username = UserDefaults.standard.string(forKey: DefaultsKeys.username)!
+        self.profileImageUrl = UserDefaults.standard.string(forKey: DefaultsKeys.profileImageUrl)!
     }
 }
 
-//extension User {
-//    static let login = Resource<[ListItem]>(url: URL(string: "http://www.mylysts.com/api/i/user/login/google?apiKey=p8q937b32y2ef8sdyg")!, parseJSON: { json in
-//        guard let dictionaries = json as? [JSONDictionary] else { return nil }
-//        return dictionaries.flatMap(ListItem.init)
-//    })
-//}
+

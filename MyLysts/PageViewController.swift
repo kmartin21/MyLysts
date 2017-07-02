@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDelegate {
     
@@ -54,7 +55,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
 
         newListButton.setImage(UIImage(named: "new_list"), for: .normal)
         searchButton.setImage(UIImage(named: "search"), for: .normal)
-        profileImageButton.setImage(UIImage(named: "profile_pic"), for: .normal)
+        profileImageButton.kf.setImage(with: URL(string: User.currentUser!.profileImageUrl), for: .normal)
         profileImageButton.imageView?.contentMode = .scaleAspectFit
         profileImageButton.layer.cornerRadius = 0.5 * (navigationController!.navigationBar.frame.height/1.5)
         profileImageButton.clipsToBounds = true

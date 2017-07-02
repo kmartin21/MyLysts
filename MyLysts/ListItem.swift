@@ -34,5 +34,4 @@ extension ListItem: JSONDecodable {
         self.numLinks = itemCounts["links"] as? Int
         self.numLists = itemCounts["lists"] as? Int
     }
-    
 }

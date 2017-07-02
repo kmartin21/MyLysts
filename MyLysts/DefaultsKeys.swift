@@ -10,4 +10,5 @@ import Foundation
 
 struct DefaultsKeys {
     static let username = "username"
+    static let profileImageUrl = "profileImageUrl"
 }

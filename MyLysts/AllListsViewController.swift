@@ -97,7 +97,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchPublicLists() {
-        viewModel.fetchPublicLists { (listItems, error, canLoadMore) in
+        viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 self.refreshControl.endRefreshing()
@@ -113,7 +113,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadMorePublicLists() {
-        viewModel.loadMorePublicLists { (listItems, error, canLoadMore) in
+        viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 self.refreshControl.endRefreshing()
