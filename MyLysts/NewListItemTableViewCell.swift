@@ -83,7 +83,7 @@ class NewListItemTableViewCell: UITableViewCell {
     }
 
     func getUrlText() -> String {
-        return linkTextField.text ?? ""
+        return linkTextField.text!
     }
     
     func getTitleText() -> String {

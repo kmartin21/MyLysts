@@ -26,8 +26,10 @@ class NewListViewController: UIViewController {
     private let unlistedListButton: UIButton
     private let privateListButton: UIButton
     private var currentListId: String = ""
+    var didDismiss: (() -> ())?
+    private var listId: String?
     
-    init() {
+    init(listId: String? = nil) {
         viewModel = NewListViewModel()
         closeButton = UIButton(frame: .zero)
         createButton = UIButton(frame: .zero)
@@ -40,6 +42,9 @@ class NewListViewController: UIViewController {
         publicListButton = UIButton(frame: .zero)
         unlistedListButton = UIButton(frame: .zero)
         privateListButton = UIButton(frame: .zero)
+        if let id = listId {
+            self.listId = id
+        }
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,6 +56,9 @@ class NewListViewController: UIViewController {
         super.viewDidLoad()
 
         createUI()
+        if listId != nil {
+            loadListById()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,9 +73,9 @@ class NewListViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         view.addSubview(closeButton)
         
-        createButton.setTitle("Done", for: .normal)
+        createButton.setTitle("Save", for: .normal)
         createButton.setTitleColor(Color.lightBlack, for: .normal)
-        createButton.addTarget(self, action: #selector(createListButtonTapped), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(SaveButtonTapped), for: .touchUpInside)
         view.addSubview(createButton)
         
         tableView.delegate = self
@@ -207,26 +215,50 @@ class NewListViewController: UIViewController {
         if !listItems.isEmpty {
             guard isValidListItem() else {return}
             let cell = tableView.cellForRow(at: IndexPath(row: listItems.count - 1, section: 0)) as! NewListItemTableViewCell
-            let listItemInfo = ["type":"link","title": cell.getTitleText() ?? "","description": cell.getDescriptionText() ?? "","url": cell.getUrlText(),"imageUrl": cell.getImageUrlText() ?? ""]
-            addListItem(listItemInfo: listItemInfo)
+            let listItemInfo = ["type":"link","title": cell.getTitleText(),"description": cell.getDescriptionText(),"url": cell.getUrlText(),"imageUrl": cell.getImageUrlText()]
+            addListItem(save: false, listItemInfo: listItemInfo)
         } else {
             guard isValidList() else {return}
             let listInfo = ["title": listTitleTextField.text!, "description": listDescriptionTextField.text!, "imageUrl": listImageUrlTextField.text ?? "", "privacy": selectedPrivacy()]
-            createNewList(listInfo: listInfo)
+            createNewList(save: false, listInfo: listInfo)
         }
     }
     
-    func createNewList(listInfo: [String: String]) {
+    func saveList() -> Bool {
+        if !listItems.isEmpty {
+            guard isValidListItem() else {return false}
+            let cell = tableView.cellForRow(at: IndexPath(row: listItems.count - 1, section: 0)) as! NewListItemTableViewCell
+            let listItemInfo = ["type":"link","title": cell.getTitleText(),"description": cell.getDescriptionText(),"url": cell.getUrlText(),"imageUrl": cell.getImageUrlText()]
+            addListItem(save: true, listItemInfo: listItemInfo)
+            return true
+        } else {
+            guard isValidList() else {return false}
+            let listInfo = ["title": listTitleTextField.text!, "description": listDescriptionTextField.text!, "imageUrl": listImageUrlTextField.text ?? "", "privacy": selectedPrivacy()]
+            createNewList(save: true, listInfo: listInfo)
+            return true
+        }
+    }
+    
+    func loadListById() {
+        viewModel.fetchList(id: listId!) { (list, error) in
+            print(list)
+            print(error)
+        }
+    }
+    
+    func createNewList(save: Bool, listInfo: [String: String]) {
         addListItemButton.isHidden = true
         activityIndicatorView.startAnimating()
         viewModel.createNewList(listInfo: listInfo) { (newListDict, error) in
             if error == nil, let newList = newListDict as? JSONDictionary {
                 self.currentListId = newList["id"] as! String
-                DispatchQueue.main.async {
-                    self.activityIndicatorView.stopAnimating()
-                    self.addListItemButton.isHidden = false
-                    self.listItems.append(["":""])
-                    self.tableView.insertRows(at: [IndexPath(row: self.listItems.count - 1, section: 0)], with: .top)
+                if !save {
+                    DispatchQueue.main.async {
+                        self.activityIndicatorView.stopAnimating()
+                        self.addListItemButton.isHidden = false
+                        self.listItems.append(["":""])
+                        self.tableView.insertRows(at: [IndexPath(row: self.listItems.count - 1, section: 0)], with: .top)
+                    }
                 }
             } else {
                 print(error!.localizedDescription)
@@ -234,7 +266,7 @@ class NewListViewController: UIViewController {
         }
     }
     
-    func addListItem(listItemInfo: [String: String]) {
+    func addListItem(save: Bool, listItemInfo: [String: String]) {
         addListItemButton.isHidden = true
         activityIndicatorView.startAnimating()
         viewModel.addListItem(listId: currentListId, listItemInfo: listItemInfo) { (_, error) in
@@ -257,8 +289,9 @@ class NewListViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func createListButtonTapped(sender: UIButton) {
-        guard isValidList() else {return}
+    func SaveButtonTapped(sender: UIButton) {
+        guard saveList() else {return}
+        didDismiss?()
         dismiss(animated: true, completion: nil)
     }
     
@@ -283,10 +316,8 @@ class NewListViewController: UIViewController {
     
     func isValidListItem() -> Bool {
         let cell = tableView.cellForRow(at: IndexPath(row: listItems.count - 1, section: 0)) as! NewListItemTableViewCell
-        guard cell.getUrlText().isEmpty else {
-            return true
-        }
-        let alert = UIAlertController(title: nil, message: "You must at least include a url link in a list item", preferredStyle: UIAlertControllerStyle.alert)
+        guard cell.getUrlText().isEmpty, !cell.getUrlText().isValidUrl() else {return true}
+        let alert = UIAlertController(title: nil, message: "You must have a valid url in a list item", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return false

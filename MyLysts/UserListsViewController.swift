@@ -64,9 +64,8 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
         emptyUserListsTableView = EmptyUserListsTableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         emptyUserListsTableView.getCreateListButton().addTarget(self, action: #selector(createListButtonTapped), for: .touchUpInside)
         
+        refreshList()
         addConstraints()
-        refreshControl.beginRefreshing()
-        fetchUserLists()
     }
     
     func addConstraints() {
@@ -84,6 +83,11 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func refresh(sender: UIRefreshControl) {
+        fetchUserLists()
+    }
+    
+    func refreshList() {
+        refreshControl.beginRefreshing()
         fetchUserLists()
     }
     
@@ -139,7 +143,11 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createListButtonTapped(sender: UIButton) {
+        let newListVC = NewListViewController()
         self.present(NewListViewController(), animated: true, completion: nil)
+        newListVC.didDismiss = {
+            self.refreshList()
+        }
     }
     
     func logoutButtonTapped(sender: UIButton) {
@@ -190,5 +198,11 @@ extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let listItem = userLists[indexPath.row]
+        let newListVC = NewListViewController(listId: listItem.id)
+        present(newListVC, animated: true, completion: nil)
     }
 }

@@ -32,6 +32,23 @@ class NewListViewModel {
         }
     }
     
+    func fetchList(id: String, completion: @escaping ((_ token: Any?, _ error: Error?) -> ())) {
+        let resource = createGetByIdResource(id: id)
+        apiClient.load(resource: resource) { (list, error) in
+            completion(list, error)
+        }
+    }
+    
+    private func createGetByIdResource(id: String) -> Resource<JSONDictionary> {
+        let url = URL(string: "http://www.mylysts.com/api/i/list/v/\(id)?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())")!
+        print(url.absoluteString)
+        return Resource(url: url, parseJSON: { json in
+            guard let dictionaries = json as? JSONDictionary else { return nil }
+            return dictionaries
+
+        })
+    }
+    
     
     private func createListResource(listInfo: [String: String]) -> Resource<JSONDictionary> {
         let url = URL(string: "http://www.mylysts.com/api/i/list?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())")!

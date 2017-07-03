@@ -16,6 +16,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     private let newListButton: UIButton
     private let searchButton: UIButton
     private let profileImageButton: UIButton
+    private let viewControllers = [AllListsViewController(), UserListsViewController()]
 
     init() {
         pageControl = PageControl(titles: ["All", "Mine"])
@@ -113,7 +114,6 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         let navBarHeight = navigationController?.navigationBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
-        let viewControllers = [AllListsViewController(), UserListsViewController()]
         
         var index: Int = 0
         
@@ -154,6 +154,11 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     }
     
     func newListButtonTapped() {
-        present(NewListViewController(), animated: true, completion: nil)
+        let newListVC = NewListViewController()
+        present(newListVC, animated: true, completion: nil)
+        let userListsVC = viewControllers[1] as! UserListsViewController
+        newListVC.didDismiss = {
+            userListsVC.refreshList()
+        }
     }
 }

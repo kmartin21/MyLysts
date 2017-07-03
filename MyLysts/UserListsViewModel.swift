@@ -43,7 +43,7 @@ class UserListsViewModel {
         }
     }
     
-    private func createLoadMoreResource() -> Resource<JSONDictionary>{
+    private func createLoadMoreResource() -> Resource<JSONDictionary> {
         return Resource(url: URL(string: "http://www.mylysts.com/api/i/user/\(User.currentUser!.getUserId())/v/lists?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())&bpa=false&limit=\(pagingParams.getLimit())&from=\(pagingParams.getFrom())")!, parseJSON: { json in
             guard let dictionary = json as? JSONDictionary else { return nil }
             return dictionary

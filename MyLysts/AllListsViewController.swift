@@ -14,7 +14,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     private let tableView: UITableView
     private var footerView: UIView!
     private let activityIndicator: UIActivityIndicatorView
-    private let refreshControl: UIRefreshControl
+    let refreshControl: UIRefreshControl
     fileprivate var allLists: [ListItem] = []
     private var canLoadMore: Bool = false
     
@@ -55,16 +55,6 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
-//        let logoutLabel = UIButton()
-//        logoutLabel.setTitleColor(.black, for: .normal)
-//        logoutLabel.setTitle("Logout", for: .normal)
-//        logoutLabel.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-//        view.addSubview(logoutLabel)
-//        
-//        logoutLabel.translatesAutoresizingMaskIntoConstraints = false
-//        logoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        logoutLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
         footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
         activityIndicator.hidesWhenStopped = true
         footerView.addSubview(activityIndicator)
@@ -72,10 +62,6 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         addConstraints()
         refreshControl.beginRefreshing()
         fetchPublicLists()
-    }
-    
-    
-    func createTailLoadingIndicator() {
     }
     
     func addConstraints() {
@@ -194,5 +180,11 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let list = allLists[indexPath.row]
+        let detailListVC = DetailListViewController(listId: list.id, title: list.title, description: list.description, imageUrl: list.imageURL ?? "")
+        navigationController?.pushViewController(detailListVC, animated: true)
     }
 }
