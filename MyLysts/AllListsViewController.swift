@@ -16,7 +16,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     private let activityIndicator: UIActivityIndicatorView
     private let refreshControl: UIRefreshControl
     fileprivate var allLists: [ListItem] = []
-    private var canLoadMore: Bool!
+    private var canLoadMore: Bool = false
     
     init() {
         viewModel = AllListsViewModel()
@@ -49,7 +49,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Color.white
-        tableView.register(ListItemCollectionViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -183,7 +183,7 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemCollectionViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
         cell.updateCell(listItem: allLists[indexPath.row])
         return cell
     }

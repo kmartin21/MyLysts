@@ -54,7 +54,10 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         view.addSubview(scrollView)
 
         newListButton.setImage(UIImage(named: "new_list"), for: .normal)
+        newListButton.addTarget(self, action: #selector(newListButtonTapped), for: .touchUpInside)
+        
         searchButton.setImage(UIImage(named: "search"), for: .normal)
+        
         profileImageButton.kf.setImage(with: URL(string: User.currentUser!.profileImageUrl), for: .normal)
         profileImageButton.imageView?.contentMode = .scaleAspectFit
         profileImageButton.layer.cornerRadius = 0.5 * (navigationController!.navigationBar.frame.height/1.5)
@@ -148,5 +151,9 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
             scrollView.setCurrentPage(position: 1)
             pageControl.deselectIndex(0)
         }
+    }
+    
+    func newListButtonTapped() {
+        present(NewListViewController(), animated: true, completion: nil)
     }
 }

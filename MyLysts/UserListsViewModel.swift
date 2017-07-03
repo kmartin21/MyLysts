@@ -20,13 +20,13 @@ class UserListsViewModel {
     }
     
     func fetchCurrentUserLists(loadMore: Bool, completion: @escaping ([ListItem]?, Error?, Bool) -> ()) {
-//        let resource: Resource<JSONDictionary>!
-//        if loadMore {
-//            //resource = createLoadMoreResource()
-//        } else {
-//            resource = ListItem.userAll
-//        }
-        apiClient.load(resource: ListItem.userAll) { (dictionaries, error) in
+        let resource: Resource<JSONDictionary>!
+        if loadMore {
+            resource = createLoadMoreResource()
+        } else {
+            resource = ListItem.userAll
+        }
+        apiClient.load(resource: resource) { (dictionaries, error) in
             guard error == nil else {
                 completion(nil, error, self.pagingParams.canLoadMore())
                 return
@@ -41,6 +41,13 @@ class UserListsViewModel {
             })
             completion(listItems, error, self.pagingParams.canLoadMore())
         }
+    }
+    
+    private func createLoadMoreResource() -> Resource<JSONDictionary>{
+        return Resource(url: URL(string: "http://www.mylysts.com/api/i/user/\(User.currentUser!.getUserId())/v/lists?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())&bpa=false&limit=\(pagingParams.getLimit())&from=\(pagingParams.getFrom())")!, parseJSON: { json in
+            guard let dictionary = json as? JSONDictionary else { return nil }
+            return dictionary
+        })
     }
 }
 

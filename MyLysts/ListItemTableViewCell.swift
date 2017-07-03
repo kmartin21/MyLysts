@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ListItemCollectionViewCell: UITableViewCell {
+class ListItemTableViewCell: UITableViewCell {
     
     private let imageImageView: UIImageView
     private let titleLabel: UILabel

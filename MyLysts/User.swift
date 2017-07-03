@@ -37,6 +37,14 @@ class User {
         self.username = UserDefaults.standard.string(forKey: DefaultsKeys.username)!
         self.profileImageUrl = UserDefaults.standard.string(forKey: DefaultsKeys.profileImageUrl)!
     }
+    
+    func getAccessToken() -> String {
+        return KeychainWrapper.standard.string(forKey: KeychainKeys.accessToken)!
+    }
+    
+    func getUserId() -> String {
+        return KeychainWrapper.standard.string(forKey: KeychainKeys.userId)!
+    }
 }
 
 

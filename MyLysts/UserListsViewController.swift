@@ -15,7 +15,7 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     private var footerView: UIView!
     private let activityIndicator: UIActivityIndicatorView
     private let refreshControl: UIRefreshControl
-    fileprivate var allLists: [ListItem] = []
+    fileprivate var userLists: [ListItem] = []
     private var canLoadMore: Bool!
     fileprivate var emptyUserListsTableView: EmptyUserListsTableView!
     
@@ -51,21 +51,11 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Color.white
-        tableView.register(ListItemCollectionViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
-        
-        //        let logoutLabel = UIButton()
-        //        logoutLabel.setTitleColor(.black, for: .normal)
-        //        logoutLabel.setTitle("Logout", for: .normal)
-        //        logoutLabel.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        //        view.addSubview(logoutLabel)
-        //
-        //        logoutLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        logoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //        logoutLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
         activityIndicator.hidesWhenStopped = true
@@ -76,11 +66,7 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
         
         addConstraints()
         refreshControl.beginRefreshing()
-        fetchPublicLists()
-    }
-    
-    
-    func createTailLoadingIndicator() {
+        fetchUserLists()
     }
     
     func addConstraints() {
@@ -98,10 +84,10 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func refresh(sender: UIRefreshControl) {
-        fetchPublicLists()
+        fetchUserLists()
     }
     
-    func fetchPublicLists() {
+    func fetchUserLists() {
         viewModel.fetchCurrentUserLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
@@ -112,30 +98,30 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
                 self.refreshControl.endRefreshing()
                 return
             }
-            self.allLists = listItems
+            self.userLists = listItems
             self.reloadData()
         }
     }
     
-//    func loadMorePublicLists() {
-//        viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
-//            self.canLoadMore = canLoadMore
-//            guard error == nil else {
-//                self.refreshControl.endRefreshing()
-//                return
-//            }
-//            guard let listItems = listItems else {
-//                self.refreshControl.endRefreshing()
-//                return
-//            }
-//            let startIndex = self.allLists.count
-//            self.allLists.append(contentsOf: listItems)
-//            let indexPaths = self.allLists[startIndex..<self.allLists.count].enumerated().map({ index,_ -> IndexPath in
-//                return IndexPath(row: (index + startIndex), section: 0)
-//            })
-//            self.insertRows(indexPaths: indexPaths)
-//        }
-//    }
+    func loadMoreUserLists() {
+        viewModel.fetchCurrentUserLists(loadMore: true) { (listItems, error, canLoadMore) in
+            self.canLoadMore = canLoadMore
+            guard error == nil else {
+                self.refreshControl.endRefreshing()
+                return
+            }
+            guard let listItems = listItems else {
+                self.refreshControl.endRefreshing()
+                return
+            }
+            let startIndex = self.userLists.count
+            self.userLists.append(contentsOf: listItems)
+            let indexPaths = self.userLists[startIndex..<self.userLists.count].enumerated().map({ index,_ -> IndexPath in
+                return IndexPath(row: (index + startIndex), section: 0)
+            })
+            self.insertRows(indexPaths: indexPaths)
+        }
+    }
     
     func reloadData() {
         DispatchQueue.main.async {
@@ -153,7 +139,7 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createListButtonTapped(sender: UIButton) {
-        
+        self.present(NewListViewController(), animated: true, completion: nil)
     }
     
     func logoutButtonTapped(sender: UIButton) {
@@ -171,14 +157,14 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
         if distance < 200 && canLoadMore {
             tableView.tableFooterView = footerView
             activityIndicator.startAnimating()
-            //loadMorePublicLists()
+            loadMoreUserLists()
         }
     }
 }
 
 extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard allLists.isEmpty else {
+        guard userLists.isEmpty else {
             tableView.separatorStyle = .singleLine
             tableView.backgroundView = nil
             return 1
@@ -189,12 +175,12 @@ extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allLists.count
+        return userLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemCollectionViewCell
-        cell.updateCell(listItem: allLists[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
+        cell.updateCell(listItem: userLists[indexPath.row])
         return cell
     }
     

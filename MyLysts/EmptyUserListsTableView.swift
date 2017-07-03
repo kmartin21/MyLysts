@@ -48,14 +48,14 @@ class EmptyUserListsTableView: UIView {
         headerLabel.textColor = Color.lightGrey
         headerLabel.text = "Create a list of anything for the world to see."
         headerLabel.font = UIFont(name: TextFont.normal, size: TextSize.small)
-        headerLabel.textAlignment = .center
+        headerLabel.textAlignment = .left
         addSubview(headerLabel)
         
         ideasHeaderLabel.backgroundColor = .clear
         ideasHeaderLabel.textColor = Color.grey
         ideasHeaderLabel.text = "Here are some ideas:"
         ideasHeaderLabel.font = UIFont(name: TextFont.normalMedium, size: TextSize.small)
-        ideasHeaderLabel.textAlignment = .center
+        ideasHeaderLabel.textAlignment = .left
         addSubview(ideasHeaderLabel)
         
         ideasLabel.backgroundColor = .clear
@@ -83,6 +83,8 @@ class EmptyUserListsTableView: UIView {
         
         ideasHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
         ideasHeaderLabel.leftAnchor.constraint(equalTo: headerLabel.leftAnchor).isActive = true
+        ideasHeaderLabel.widthAnchor.constraint(equalToConstant: self.frame.width - 20).isActive = true
+        ideasHeaderLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         ideasHeaderLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
         
         ideasLabel.translatesAutoresizingMaskIntoConstraints = false
