@@ -97,8 +97,10 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGesture
         viewModel.fetchCurrentUserLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {
@@ -115,8 +117,10 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGesture
         viewModel.fetchCurrentUserLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {

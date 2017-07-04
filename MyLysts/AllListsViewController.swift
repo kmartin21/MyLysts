@@ -89,8 +89,8 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
                 DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
                     self.refreshControl.endRefreshing()
                 }
                 return

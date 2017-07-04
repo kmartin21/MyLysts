@@ -313,8 +313,11 @@ class NewListViewController: UIViewController {
                     }
                 }
             } else {
-                let errorMessage = Murmur(title: "Could not create a new list", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
+                DispatchQueue.main.async {
+                    let errorMessage = Murmur(title: "Could not create a new list", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    self.activityIndicatorView.stopAnimating()
+                }
             }
         }
     }
@@ -322,7 +325,13 @@ class NewListViewController: UIViewController {
     func addListItem(save: Bool, listItemInfo: [String: String]) {
         addListItemButton.isHidden = true
         activityIndicatorView.startAnimating()
-        viewModel.addListItem(listId: currentListId, listItemInfo: listItemInfo) { (_, error) in
+        let listId: String!
+        if let _ = list {
+            listId = list?.id
+        } else {
+            listId = currentListId
+        }
+        viewModel.addListItem(listId: listId, listItemInfo: listItemInfo) { (_, error) in
             if error == nil {
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
@@ -333,8 +342,11 @@ class NewListViewController: UIViewController {
                 }
                 
             } else {
-                let errorMessage = Murmur(title: "Could not add list item", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
+                DispatchQueue.main.async {
+                    let errorMessage = Murmur(title: "Could not add list item", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    self.activityIndicatorView.stopAnimating()
+                }
             }
         }
     }
@@ -455,6 +467,6 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 190
     }
 }

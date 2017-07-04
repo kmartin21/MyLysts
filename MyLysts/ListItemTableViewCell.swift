@@ -148,6 +148,6 @@ class ListItemTableViewCell: UITableViewCell {
         descriptionLabel.text = listItem.description
         authorLabel.text = listItem.url
         authorLabel.lineBreakMode = .byTruncatingTail
-        authorLabel.widthAnchor.constraint(equalToConstant: contentView.frame.width - 40).isActive = true
+        authorLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
     }
 }
