@@ -40,11 +40,13 @@ PODS:
     - IGListKit/Diffing
   - IGListKit/Diffing (3.0.0)
   - Kingfisher (3.6.2)
+  - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Google/SignIn
   - IGListKit (~> 3.0)
   - Kingfisher (~> 3.0)
+  - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
@@ -57,7 +59,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   IGListKit: 9eab6856a15fa25ad72018ff9d9eb2178c240fff
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: 8e4acd7bc1f1a57895dc6c496962fb50ea5da0c4
+PODFILE CHECKSUM: 8b9c8780880276bab433f6d6fc3dfd53522c8e83
 
 COCOAPODS: 1.2.0.beta.3

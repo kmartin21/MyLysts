@@ -9,6 +9,7 @@ target 'MyLysts' do
   pod 'Google/SignIn'
   pod 'Kingfisher', '~> 3.0'
   pod 'IGListKit', '~> 3.0'
+  pod 'SwiftKeychainWrapper'
 
   target 'MyLystsTests' do
     inherit! :search_paths

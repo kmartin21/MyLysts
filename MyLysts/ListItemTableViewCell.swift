@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ListItemCollectionViewCell: UITableViewCell {
+class ListItemTableViewCell: UITableViewCell {
     
     private let imageImageView: UIImageView
     private let titleLabel: UILabel
@@ -135,5 +135,19 @@ class ListItemCollectionViewCell: UITableViewCell {
         } else {
             numListsLabel.text = ""
         }
+    }
+    
+    func updateCell(listItem: DetailListItem) {
+        if let imageURL = listItem.imageUrl {
+            let url = URL(string: imageURL)
+            imageImageView.kf.setImage(with: url)
+        }
+        imageImageView.backgroundColor = Color.backgroundGrey
+        titleLabel.text = listItem.title
+        descriptionLabel.text = listItem.description
+        authorLabel.text = listItem.url
+        numViewsLabel.removeFromSuperview()
+        numLinksLabel.removeFromSuperview()
+        numListsLabel.removeFromSuperview()
     }
 }

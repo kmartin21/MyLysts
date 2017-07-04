@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDelegate {
     
@@ -15,6 +16,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     private let newListButton: UIButton
     private let searchButton: UIButton
     private let profileImageButton: UIButton
+    private let viewControllers = [AllListsViewController(), UserListsViewController()]
 
     init() {
         pageControl = PageControl(titles: ["All", "Mine"])
@@ -53,8 +55,11 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         view.addSubview(scrollView)
 
         newListButton.setImage(UIImage(named: "new_list"), for: .normal)
+        newListButton.addTarget(self, action: #selector(newListButtonTapped), for: .touchUpInside)
+        
         searchButton.setImage(UIImage(named: "search"), for: .normal)
-        profileImageButton.setImage(UIImage(named: "profile_pic"), for: .normal)
+        
+        profileImageButton.kf.setImage(with: URL(string: User.currentUser!.profileImageUrl), for: .normal)
         profileImageButton.imageView?.contentMode = .scaleAspectFit
         profileImageButton.layer.cornerRadius = 0.5 * (navigationController!.navigationBar.frame.height/1.5)
         profileImageButton.clipsToBounds = true
@@ -109,7 +114,6 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         let navBarHeight = navigationController?.navigationBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         
-        let viewControllers = [AllListsViewController(), UserListsViewController()]
         
         var index: Int = 0
         
@@ -146,6 +150,15 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         default:
             scrollView.setCurrentPage(position: 1)
             pageControl.deselectIndex(0)
+        }
+    }
+    
+    func newListButtonTapped() {
+        let newListVC = NewListViewController()
+        present(newListVC, animated: true, completion: nil)
+        let userListsVC = viewControllers[1] as! UserListsViewController
+        newListVC.didDismiss = {
+            userListsVC.refreshList()
         }
     }
 }

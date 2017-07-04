@@ -59,10 +59,18 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
 
         let accessToken = user.serverAuthCode!
         viewModel.loginUser(accessToken: accessToken) { (result, error) in
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-                let pageViewController = PageViewController()
-                self.navigationController?.pushViewController(pageViewController, animated: true)
+            if error == nil, let dictionary = result as? JSONDictionary {
+                DispatchQueue.main.async {
+                    User.currentUser = User(dictionary: dictionary)
+                    self.dismiss(animated: true, completion: nil)
+                    let pageViewController = PageViewController()
+                    self.navigationController?.pushViewController(pageViewController, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("Could not sign user in")
+                    GIDSignIn.sharedInstance().signOut()
+                }
             }
         }
     }
@@ -72,7 +80,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     func sign(_ signIn: GIDSignIn!, dismiss viewController: UIViewController!) {
-        
+        navigationController?.popToViewController(viewController, animated: true)
     }
     
 }

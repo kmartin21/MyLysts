@@ -12,8 +12,21 @@
 		BF7C5135712B3D4BCE9ED770 /* Pods_MyLystsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7454291C29C89A40BE1ADC6C /* Pods_MyLystsUITests.framework */; };
 		E507C65E1F040919004B44BE /* UIScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E507C65D1F040919004B44BE /* UIScrollViewExtensions.swift */; };
 		E507C6601F040939004B44BE /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E507C65F1F040939004B44BE /* UIColorExtensions.swift */; };
+		E50CB8021F094A97009C7B35 /* KeychainKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8011F094A97009C7B35 /* KeychainKeys.swift */; };
+		E50CB8041F095078009C7B35 /* UserListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8031F095078009C7B35 /* UserListsViewModel.swift */; };
+		E50CB8071F098781009C7B35 /* EmptyUserListsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8061F098781009C7B35 /* EmptyUserListsTableView.swift */; };
+		E50CB8091F09AAAC009C7B35 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8081F09AAAC009C7B35 /* NewListViewController.swift */; };
+		E50CB80D1F09AE61009C7B35 /* NewListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB80C1F09AE61009C7B35 /* NewListItemTableViewCell.swift */; };
+		E50CB80F1F09C7E9009C7B35 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB80E1F09C7E9009C7B35 /* UITextFieldExtensions.swift */; };
+		E50CB8131F0A15B7009C7B35 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8121F0A15B7009C7B35 /* UIButtonExtensions.swift */; };
+		E50CB8151F0A1ED5009C7B35 /* NewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */; };
 		E52ABF7D1F06AF7B001AF3C8 /* AllListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52ABF7C1F06AF7B001AF3C8 /* AllListsViewModel.swift */; };
 		E57867091F0774F700D89AA6 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57867081F0774F700D89AA6 /* UIImageViewExtensions.swift */; };
+		E5937E281F0A95CF00B1228E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E271F0A95CF00B1228E /* StringExtensions.swift */; };
+		E5937E2A1F0AAC5500B1228E /* DetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */; };
+		E5937E2E1F0AAE7D00B1228E /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */; };
+		E5937E301F0AAF7F00B1228E /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E2F1F0AAF7F00B1228E /* List.swift */; };
+		E5937E321F0AC6ED00B1228E /* DetailListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E311F0AC6ED00B1228E /* DetailListItem.swift */; };
 		E5995FA51F02D93B000136F7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5995FA41F02D93B000136F7 /* PageViewController.swift */; };
 		E5995FA91F02F271000136F7 /* UserListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5995FA81F02F271000136F7 /* UserListsViewController.swift */; };
 		E5995FAD1F035886000136F7 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5995FAC1F035886000136F7 /* PageControl.swift */; };
@@ -33,7 +46,7 @@
 		E5D33F0C1EFB91AE001D9480 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33F0A1EFB91AE001D9480 /* AllListsViewController.swift */; };
 		E5D33F0D1EFB91AE001D9480 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D33F0A1EFB91AE001D9480 /* AllListsViewController.swift */; };
 		E5DAB9EE1F0843AA00E8ECBB /* PagingParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DAB9ED1F0843AA00E8ECBB /* PagingParams.swift */; };
-		E5EA4A191F04846D004C9ADE /* ListItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A181F04846D004C9ADE /* ListItemCollectionViewCell.swift */; };
+		E5EA4A191F04846D004C9ADE /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A181F04846D004C9ADE /* ListItemTableViewCell.swift */; };
 		E5EA4A1B1F04849C004C9ADE /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A1A1F04849C004C9ADE /* ListItem.swift */; };
 		E5EA4A1D1F054B4D004C9ADE /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A1C1F054B4D004C9ADE /* Resource.swift */; };
 		E5EA4A211F054CC3004C9ADE /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A201F054CC3004C9ADE /* JSONDecodable.swift */; };
@@ -71,8 +84,22 @@
 		E12BA20641E866E3F29439E6 /* Pods-MyLystsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLystsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLystsTests/Pods-MyLystsTests.release.xcconfig"; sourceTree = "<group>"; };
 		E507C65D1F040919004B44BE /* UIScrollViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtensions.swift; sourceTree = "<group>"; };
 		E507C65F1F040939004B44BE /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		E50CB8011F094A97009C7B35 /* KeychainKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKeys.swift; sourceTree = "<group>"; };
+		E50CB8031F095078009C7B35 /* UserListsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListsViewModel.swift; sourceTree = "<group>"; };
+		E50CB8051F0957D9009C7B35 /* MyLysts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyLysts.entitlements; sourceTree = "<group>"; };
+		E50CB8061F098781009C7B35 /* EmptyUserListsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyUserListsTableView.swift; sourceTree = "<group>"; };
+		E50CB8081F09AAAC009C7B35 /* NewListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
+		E50CB80C1F09AE61009C7B35 /* NewListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListItemTableViewCell.swift; sourceTree = "<group>"; };
+		E50CB80E1F09C7E9009C7B35 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		E50CB8121F0A15B7009C7B35 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListViewModel.swift; sourceTree = "<group>"; };
 		E52ABF7C1F06AF7B001AF3C8 /* AllListsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewModel.swift; sourceTree = "<group>"; };
 		E57867081F0774F700D89AA6 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		E5937E271F0A95CF00B1228E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewModel.swift; sourceTree = "<group>"; };
+		E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		E5937E2F1F0AAF7F00B1228E /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		E5937E311F0AC6ED00B1228E /* DetailListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListItem.swift; sourceTree = "<group>"; };
 		E5995FA41F02D93B000136F7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E5995FA81F02F271000136F7 /* UserListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListsViewController.swift; sourceTree = "<group>"; };
 		E5995FAC1F035886000136F7 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
@@ -97,7 +124,7 @@
 		E5D33F021EFB84AB001D9480 /* MyLystsUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyLystsUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5D33F0A1EFB91AE001D9480 /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		E5DAB9ED1F0843AA00E8ECBB /* PagingParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingParams.swift; sourceTree = "<group>"; };
-		E5EA4A181F04846D004C9ADE /* ListItemCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5EA4A181F04846D004C9ADE /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 		E5EA4A1A1F04849C004C9ADE /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		E5EA4A1C1F054B4D004C9ADE /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		E5EA4A201F054CC3004C9ADE /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
@@ -167,6 +194,9 @@
 				E507C65D1F040919004B44BE /* UIScrollViewExtensions.swift */,
 				E507C65F1F040939004B44BE /* UIColorExtensions.swift */,
 				E57867081F0774F700D89AA6 /* UIImageViewExtensions.swift */,
+				E50CB80E1F09C7E9009C7B35 /* UITextFieldExtensions.swift */,
+				E50CB8121F0A15B7009C7B35 /* UIButtonExtensions.swift */,
+				E5937E271F0A95CF00B1228E /* StringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -199,6 +229,7 @@
 		E5D33EC31EFB43E4001D9480 /* MyLysts */ = {
 			isa = PBXGroup;
 			children = (
+				E50CB8051F0957D9009C7B35 /* MyLysts.entitlements */,
 				E5D33F091EFB8B04001D9480 /* Models */,
 				E5D33EF21EFB4F93001D9480 /* Views */,
 				E5D33F081EFB8AFD001D9480 /* Controllers */,
@@ -238,6 +269,7 @@
 				E5EA4A171F048409004C9ADE /* Cells */,
 				E5D33EF41EFB500B001D9480 /* LoginView.swift */,
 				E5995FAC1F035886000136F7 /* PageControl.swift */,
+				E50CB8061F098781009C7B35 /* EmptyUserListsTableView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -279,6 +311,8 @@
 				E5995FA41F02D93B000136F7 /* PageViewController.swift */,
 				E5D33F0A1EFB91AE001D9480 /* AllListsViewController.swift */,
 				E5995FA81F02F271000136F7 /* UserListsViewController.swift */,
+				E50CB8081F09AAAC009C7B35 /* NewListViewController.swift */,
+				E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -295,7 +329,8 @@
 		E5EA4A171F048409004C9ADE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E5EA4A181F04846D004C9ADE /* ListItemCollectionViewCell.swift */,
+				E5EA4A181F04846D004C9ADE /* ListItemTableViewCell.swift */,
+				E50CB80C1F09AE61009C7B35 /* NewListItemTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -305,6 +340,7 @@
 			children = (
 				E5EA4A241F05F420004C9ADE /* User.swift */,
 				E5EA4A261F05F54A004C9ADE /* DefaultsKeys.swift */,
+				E50CB8011F094A97009C7B35 /* KeychainKeys.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -313,6 +349,8 @@
 			isa = PBXGroup;
 			children = (
 				E5EA4A1A1F04849C004C9ADE /* ListItem.swift */,
+				E5937E2F1F0AAF7F00B1228E /* List.swift */,
+				E5937E311F0AC6ED00B1228E /* DetailListItem.swift */,
 			);
 			name = Lists;
 			sourceTree = "<group>";
@@ -322,6 +360,9 @@
 			children = (
 				E5EA4A2D1F060532004C9ADE /* LoginViewModel.swift */,
 				E52ABF7C1F06AF7B001AF3C8 /* AllListsViewModel.swift */,
+				E50CB8031F095078009C7B35 /* UserListsViewModel.swift */,
+				E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */,
+				E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -406,6 +447,11 @@
 						DevelopmentTeam = XX2G6SA24K;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					E5D33ED41EFB43E4001D9480 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -618,10 +664,11 @@
 				E5EA4A2E1F060532004C9ADE /* LoginViewModel.swift in Sources */,
 				E5EA4A1B1F04849C004C9ADE /* ListItem.swift in Sources */,
 				E5EA4A1D1F054B4D004C9ADE /* Resource.swift in Sources */,
-				E5EA4A191F04846D004C9ADE /* ListItemCollectionViewCell.swift in Sources */,
+				E5EA4A191F04846D004C9ADE /* ListItemTableViewCell.swift in Sources */,
 				E5D33F0B1EFB91AE001D9480 /* AllListsViewController.swift in Sources */,
 				E5EA4A2B1F06026F004C9ADE /* HttpMethod.swift in Sources */,
 				E5EA4A271F05F54A004C9ADE /* DefaultsKeys.swift in Sources */,
+				E50CB8041F095078009C7B35 /* UserListsViewModel.swift in Sources */,
 				E5D33EF51EFB500B001D9480 /* LoginView.swift in Sources */,
 				E507C6601F040939004B44BE /* UIColorExtensions.swift in Sources */,
 				E5EA4A231F055CED004C9ADE /* APIClient.swift in Sources */,
@@ -629,15 +676,27 @@
 				E5EA4A251F05F420004C9ADE /* User.swift in Sources */,
 				E52ABF7D1F06AF7B001AF3C8 /* AllListsViewModel.swift in Sources */,
 				E5D33EC71EFB43E4001D9480 /* LoginViewController.swift in Sources */,
+				E50CB8131F0A15B7009C7B35 /* UIButtonExtensions.swift in Sources */,
 				E5D33EFB1EFB54F8001D9480 /* Color.swift in Sources */,
+				E5937E321F0AC6ED00B1228E /* DetailListItem.swift in Sources */,
 				E5EA4A211F054CC3004C9ADE /* JSONDecodable.swift in Sources */,
+				E50CB80D1F09AE61009C7B35 /* NewListItemTableViewCell.swift in Sources */,
 				E5DAB9EE1F0843AA00E8ECBB /* PagingParams.swift in Sources */,
 				E5995FA91F02F271000136F7 /* UserListsViewController.swift in Sources */,
 				E5D33EC51EFB43E4001D9480 /* AppDelegate.swift in Sources */,
+				E50CB8071F098781009C7B35 /* EmptyUserListsTableView.swift in Sources */,
+				E5937E301F0AAF7F00B1228E /* List.swift in Sources */,
+				E50CB8091F09AAAC009C7B35 /* NewListViewController.swift in Sources */,
+				E5937E281F0A95CF00B1228E /* StringExtensions.swift in Sources */,
 				E5995FAD1F035886000136F7 /* PageControl.swift in Sources */,
 				E5995FA51F02D93B000136F7 /* PageViewController.swift in Sources */,
+				E50CB8021F094A97009C7B35 /* KeychainKeys.swift in Sources */,
+				E50CB80F1F09C7E9009C7B35 /* UITextFieldExtensions.swift in Sources */,
+				E5937E2E1F0AAE7D00B1228E /* DetailListViewController.swift in Sources */,
+				E5937E2A1F0AAC5500B1228E /* DetailListViewModel.swift in Sources */,
 				E57867091F0774F700D89AA6 /* UIImageViewExtensions.swift in Sources */,
 				E507C65E1F040919004B44BE /* UIScrollViewExtensions.swift in Sources */,
+				E50CB8151F0A1ED5009C7B35 /* NewListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +844,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyLysts/MyLysts.entitlements;
 				DEVELOPMENT_TEAM = XX2G6SA24K;
 				INFOPLIST_FILE = MyLysts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -802,6 +862,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyLysts/MyLysts.entitlements;
 				DEVELOPMENT_TEAM = XX2G6SA24K;
 				INFOPLIST_FILE = MyLysts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -14,9 +14,9 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     private let tableView: UITableView
     private var footerView: UIView!
     private let activityIndicator: UIActivityIndicatorView
-    private let refreshControl: UIRefreshControl
+    let refreshControl: UIRefreshControl
     fileprivate var allLists: [ListItem] = []
-    private var canLoadMore: Bool!
+    private var canLoadMore: Bool = false
     
     init() {
         viewModel = AllListsViewModel()
@@ -49,21 +49,11 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = Color.white
-        tableView.register(ListItemCollectionViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ListItemTableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
-        
-//        let logoutLabel = UIButton()
-//        logoutLabel.setTitleColor(.black, for: .normal)
-//        logoutLabel.setTitle("Logout", for: .normal)
-//        logoutLabel.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-//        view.addSubview(logoutLabel)
-//        
-//        logoutLabel.translatesAutoresizingMaskIntoConstraints = false
-//        logoutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        logoutLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
         activityIndicator.hidesWhenStopped = true
@@ -72,10 +62,6 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         addConstraints()
         refreshControl.beginRefreshing()
         fetchPublicLists()
-    }
-    
-    
-    func createTailLoadingIndicator() {
     }
     
     func addConstraints() {
@@ -97,7 +83,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchPublicLists() {
-        viewModel.fetchPublicLists { (listItems, error, canLoadMore) in
+        viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 self.refreshControl.endRefreshing()
@@ -113,7 +99,7 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadMorePublicLists() {
-        viewModel.loadMorePublicLists { (listItems, error, canLoadMore) in
+        viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 self.refreshControl.endRefreshing()
@@ -183,7 +169,7 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemCollectionViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
         cell.updateCell(listItem: allLists[indexPath.row])
         return cell
     }
@@ -194,5 +180,11 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let list = allLists[indexPath.row]
+        let detailListVC = DetailListViewController(listId: list.id, title: list.title, description: list.description, imageUrl: list.imageURL ?? "")
+        navigationController?.pushViewController(detailListVC, animated: true)
     }
 }
