@@ -24,7 +24,7 @@ class UserListsViewModel {
         if loadMore {
             resource = createLoadMoreResource()
         } else {
-            resource = ListItem.userAll
+            resource = createAllListsResource()
         }
         apiClient.load(resource: resource) { (dictionaries, error) in
             guard error == nil else {
@@ -49,11 +49,11 @@ class UserListsViewModel {
             return dictionary
         })
     }
-}
-
-extension ListItem {
-    static let userAll = Resource<JSONDictionary>(url: URL(string: "http://www.mylysts.com/api/i/user/\(KeychainWrapper.standard.string(forKey: KeychainKeys.userId)!)/v/lists?apiKey=p8q937b32y2ef8sdyg&accessToken=\(KeychainWrapper.standard.string(forKey: KeychainKeys.accessToken)!)&bpa=false")!, parseJSON: { json in
-        guard let dictionaries = json as? JSONDictionary else { return nil }
-        return dictionaries
-    })
+    
+    private func createAllListsResource() -> Resource<JSONDictionary> {
+        return Resource(url: URL(string: "http://www.mylysts.com/api/i/user/\(KeychainWrapper.standard.string(forKey: KeychainKeys.userId)!)/v/lists?apiKey=p8q937b32y2ef8sdyg&accessToken=\(KeychainWrapper.standard.string(forKey: KeychainKeys.accessToken)!)&bpa=false")!, parseJSON: { json in
+            guard let dictionaries = json as? JSONDictionary else { return nil }
+            return dictionaries
+        })
+    }
 }

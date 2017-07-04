@@ -24,6 +24,8 @@ class User {
               let profileImageURL = user["imageUrl"] as? String
               else { return nil }
         
+        KeychainWrapper.standard.removeObject(forKey: KeychainKeys.accessToken)
+        KeychainWrapper.standard.removeObject(forKey: KeychainKeys.userId)
         KeychainWrapper.standard.set(token, forKey:  KeychainKeys.accessToken)
         KeychainWrapper.standard.set(userId, forKey: KeychainKeys.userId)
         let defaults = UserDefaults.standard

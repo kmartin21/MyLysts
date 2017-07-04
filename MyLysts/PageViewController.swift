@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Whisper
 
 class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -17,6 +18,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     private let searchButton: UIButton
     private let profileImageButton: UIButton
     private let viewControllers = [AllListsViewController(), UserListsViewController()]
+    private let viewModel: LogoutViewModel
 
     init() {
         pageControl = PageControl(titles: ["All", "Mine"])
@@ -28,7 +30,7 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         searchButton.tag = 1
         profileImageButton = UIButton(frame: .zero)
         profileImageButton.tag = 1
-        
+        viewModel = LogoutViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -188,9 +190,20 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         popoverContentController.popoverPresentationController!.delegate = self
         self.present(popoverContentController, animated: true, completion: nil)
         popoverContentController.didLogout = {
-            DispatchQueue.main.async {
-                self.navigationController?.setViewControllers([LoginViewController()], animated: true)
-            }
+            self.viewModel.logoutUser(completion: { (response, error) in
+                if error == nil {
+                    GIDSignIn.sharedInstance().signOut()
+                    DispatchQueue.main.async {
+                        self.navigationController?.setViewControllers([LoginViewController()], animated: true)
+                    }
+                } else {
+                    let errorMessage = Murmur(title: "Could not logout user", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    DispatchQueue.main.async {
+                        Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    }
+                }
+            })
+            
         }
     }
     
