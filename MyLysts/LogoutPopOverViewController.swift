@@ -33,7 +33,6 @@ class LogoutPopOverViewController: UIViewController {
     }
     
     func logout(sender: UIButton) {
-        GIDSignIn.sharedInstance().signOut()
         dismiss(animated: true, completion: nil)
         didLogout?()
     }

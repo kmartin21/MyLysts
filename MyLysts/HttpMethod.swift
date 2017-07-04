@@ -10,7 +10,7 @@ import Foundation
 
 enum HttpMethod<Body> {
     case get
-    case post(Body)
+    case post(Body?)
     case delete
 }
 
@@ -27,6 +27,9 @@ extension HttpMethod {
         switch self {
         case .get: return .get
         case .post(let body):
+            guard let body = body else {
+                return .post(nil)
+            }
             return .post(f(body))
         case .delete: return .delete
         }
