@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Whisper
 
 class DetailListViewController: UIViewController, UIScrollViewDelegate {
     
@@ -174,6 +175,8 @@ class DetailListViewController: UIViewController, UIScrollViewDelegate {
                 }
             } else {
                 DispatchQueue.main.async {
+                    let errorMessage = Murmur(title: "Could not load lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
                     self.refreshControl.endRefreshing()
                     self.loadingActivityIndicator.stopAnimating()
                 }
@@ -186,6 +189,8 @@ class DetailListViewController: UIViewController, UIScrollViewDelegate {
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 DispatchQueue.main.async {
+                    let errorMessage = Murmur(title: "Could not load more lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
                     self.tableView.tableFooterView = nil
                 }
                 return
@@ -200,7 +205,15 @@ class DetailListViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func deleteListItem(listId: String, listItemId: String) {
-        viewModel.deleteListItem(listId: listId, listItemId: listItemId) { 
+        viewModel.deleteListItem(listId: listId, listItemId: listItemId) { error in
+            guard error == nil else {
+                let errorMessage = Murmur(title: "Could not delete list item", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
+                DispatchQueue.main.async {
+                    self.loadingActivityIndicator.stopAnimating()
+                }
+                return
+            }
             DispatchQueue.main.async {
                 self.loadingActivityIndicator.stopAnimating()
             }
@@ -302,7 +315,7 @@ extension DetailListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

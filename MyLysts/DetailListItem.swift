@@ -29,8 +29,8 @@ extension DetailListItem: JSONDecodable {
         self.id = id
         self.listId = listId
         self.url = url
-        self.title = value["title"] as? String
-        self.description = value["description"] as? String
-        self.imageUrl = value["imageUrl"] as? String
+        self.title = data["title"] as? String
+        self.description = data["description"] as? String
+        self.imageUrl = data["imageUrl"] as? String
     }
 }

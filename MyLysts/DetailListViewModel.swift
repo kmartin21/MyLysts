@@ -43,12 +43,10 @@ class DetailListViewModel {
         }
     }
     
-    func deleteListItem(listId: String, listItemId: String, completion: @escaping (() -> ())) {
+    func deleteListItem(listId: String, listItemId: String, completion: @escaping ((Error?) -> ())) {
         let resource = createDeleteListItemResource(listId: listId, listItemId: listItemId)
-        apiClient.load(resource: resource) { (r, e) in
-            print(r)
-            print(e)
-            completion()
+        apiClient.load(resource: resource) { (_, error) in
+            completion(error)
         }
     }
     

@@ -57,6 +57,8 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     func createUI() {
         view.backgroundColor = Color.white
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView())
+        
         scrollView.panGestureRecognizer.delaysTouchesBegan = true
         scrollView.canCancelContentTouches = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -166,8 +168,30 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         }
     }
     
-    func profileImageButtonTapped() {
-        
+    func profileImageButtonTapped(sender: UIButton) {
+        presentPopover()
+    }
+    
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        popoverPresentationController.barButtonItem = navigationItem.rightBarButtonItem
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    
+    func presentPopover() {
+        let popoverContentController = LogoutPopOverViewController()
+        popoverContentController.preferredContentSize = CGSize(width: 80, height: 50)
+        popoverContentController.modalPresentationStyle = .popover
+        popoverContentController.popoverPresentationController!.delegate = self
+        self.present(popoverContentController, animated: true, completion: nil)
+        popoverContentController.didLogout = {
+            DispatchQueue.main.async {
+                self.navigationController?.setViewControllers([LoginViewController()], animated: true)
+            }
+        }
     }
     
     func newListButtonTapped() {

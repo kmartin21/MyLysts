@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Whisper
 
 class NewListViewController: UIViewController {
     
@@ -56,8 +57,29 @@ class NewListViewController: UIViewController {
         super.viewDidLoad()
 
         createUI()
-        if let list = list {
+        if let _ = list {
             setupList()
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification:Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            if !listItems.isEmpty {
+                tableView.scrollToRow(at: IndexPath(row: listItems.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(_ notification:Notification) {
+        
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
     }
 
@@ -82,6 +104,7 @@ class NewListViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = Color.white
         tableView.register(NewListItemTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.keyboardDismissMode = .onDrag
         view.addSubview(tableView)
         
         headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 270))
@@ -290,7 +313,8 @@ class NewListViewController: UIViewController {
                     }
                 }
             } else {
-                print(error!.localizedDescription)
+                let errorMessage = Murmur(title: "Could not create a new list", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
             }
         }
     }
@@ -309,7 +333,8 @@ class NewListViewController: UIViewController {
                 }
                 
             } else {
-                print(error!.localizedDescription)
+                let errorMessage = Murmur(title: "Could not add list item", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
             }
         }
     }
@@ -430,6 +455,6 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 160
     }
 }

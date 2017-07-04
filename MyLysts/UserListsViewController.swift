@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Whisper
 
 class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
@@ -92,9 +93,11 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGesture
     }
     
     func fetchUserLists() {
+        let errorMessage = Murmur(title: "Could not load lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
         viewModel.fetchCurrentUserLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
                 self.refreshControl.endRefreshing()
                 return
             }
@@ -108,9 +111,11 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGesture
     }
     
     func loadMoreUserLists() {
+        let errorMessage = Murmur(title: "Could not load more lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
         viewModel.fetchCurrentUserLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
                 self.refreshControl.endRefreshing()
                 return
             }
@@ -188,17 +193,13 @@ extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
-        cell.updateCell(listItem: userLists[indexPath.row])
+        cell.updateCell(privacy: true, listItem: userLists[indexPath.row])
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

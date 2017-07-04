@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Whisper
 
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
@@ -56,7 +57,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             print(error.localizedDescription)
             return
         }
-
+        let errorMessage = Murmur(title: "Could not sign user in", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
         let accessToken = user.serverAuthCode!
         viewModel.loginUser(accessToken: accessToken) { (result, error) in
             if error == nil, let dictionary = result as? JSONDictionary {
@@ -68,7 +69,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                 }
             } else {
                 DispatchQueue.main.async {
-                    print("Could not sign user in")
+                    Whisper.show(whistle: errorMessage, action: .show(0.5))
                     GIDSignIn.sharedInstance().signOut()
                 }
             }

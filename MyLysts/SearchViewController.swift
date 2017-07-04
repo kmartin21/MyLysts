@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Whisper
 
 class SearchViewController: UITableViewController, UISearchBarDelegate {
     var filteredTableData = [ListItem]()
@@ -98,18 +99,27 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
             return
         }
         viewModel.searchLists(keyword: keyword) { (listItems, error) in
-            self.filteredTableData = listItems!
-            DispatchQueue.main.async {
-                if !self.filteredTableData.isEmpty {
-                    self.tableView.separatorStyle = .singleLine
+            if let listItems = listItems, error == nil {
+            self.filteredTableData = listItems
+                DispatchQueue.main.async {
+                    if !self.filteredTableData.isEmpty {
+                        self.tableView.separatorStyle = .singleLine
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+                return
+            } else {
+                DispatchQueue.main.async {
+                    let errorMessage = Murmur(title: "Could not search keyword", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                }
             }
+            
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
     
     override var prefersStatusBarHidden: Bool {

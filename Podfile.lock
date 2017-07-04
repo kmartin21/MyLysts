@@ -34,19 +34,15 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - GTMSessionFetcher/Full (1.1.9):
     - GTMSessionFetcher/Core (= 1.1.9)
-  - IGListKit (3.0.0):
-    - IGListKit/Default (= 3.0.0)
-  - IGListKit/Default (3.0.0):
-    - IGListKit/Diffing
-  - IGListKit/Diffing (3.0.0)
   - Kingfisher (3.6.2)
   - SwiftKeychainWrapper (3.0.1)
+  - Whisper (5.0.0)
 
 DEPENDENCIES:
   - Google/SignIn
-  - IGListKit (~> 3.0)
   - Kingfisher (~> 3.0)
   - SwiftKeychainWrapper
+  - Whisper
 
 SPEC CHECKSUMS:
   FirebaseAnalytics: 920e46455f27b0a52a80907a6d9b73ee4bd1c635
@@ -57,10 +53,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  IGListKit: 9eab6856a15fa25ad72018ff9d9eb2178c240fff
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 8b9c8780880276bab433f6d6fc3dfd53522c8e83
+PODFILE CHECKSUM: a722b5c8890e7e8b240c7dd1fe28b05d3cb7e012
 
 COCOAPODS: 1.2.0.beta.3

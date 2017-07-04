@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Whisper
 
 class AllListsViewController: UIViewController, UIScrollViewDelegate {
     
@@ -83,10 +84,12 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchPublicLists() {
+        let errorMessage = Murmur(title: "Could not load lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+
         viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                print(error!.localizedDescription)
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
                 }
@@ -104,10 +107,12 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadMorePublicLists() {
+        let errorMessage = Murmur(title: "Could not load more lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
         viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
                 DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
                     self.refreshControl.endRefreshing()
                 }
                 return
@@ -185,11 +190,7 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

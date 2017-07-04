@@ -56,6 +56,7 @@
 		E5EA4A271F05F54A004C9ADE /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A261F05F54A004C9ADE /* DefaultsKeys.swift */; };
 		E5EA4A2B1F06026F004C9ADE /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A2A1F06026F004C9ADE /* HttpMethod.swift */; };
 		E5EA4A2E1F060532004C9ADE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A2D1F060532004C9ADE /* LoginViewModel.swift */; };
+		E5F636A41F0B783700C0A0FE /* LogoutPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */; };
 		E5FCA30C1F0AEBF40056BD94 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA30B1F0AEBF40056BD94 /* UILabelExtensions.swift */; };
 		E5FCA30E1F0AF85D0056BD94 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,7 @@
 		E5EA4A261F05F54A004C9ADE /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		E5EA4A2A1F06026F004C9ADE /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		E5EA4A2D1F060532004C9ADE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutPopOverViewController.swift; sourceTree = "<group>"; };
 		E5FCA30B1F0AEBF40056BD94 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		ED0DCA3DE4EEB106998C2FA8 /* Pods-MyLysts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLysts.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts.release.xcconfig"; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */,
 				E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */,
 				E58ABE2C1F0B5E1B00AC0835 /* SearchViewController.swift */,
+				E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				E5EA4A251F05F420004C9ADE /* User.swift in Sources */,
 				E52ABF7D1F06AF7B001AF3C8 /* AllListsViewModel.swift in Sources */,
 				E5D33EC71EFB43E4001D9480 /* LoginViewController.swift in Sources */,
+				E5F636A41F0B783700C0A0FE /* LogoutPopOverViewController.swift in Sources */,
 				E5FCA30C1F0AEBF40056BD94 /* UILabelExtensions.swift in Sources */,
 				E50CB8131F0A15B7009C7B35 /* UIButtonExtensions.swift in Sources */,
 				E58ABE2F1F0B5E8F00AC0835 /* SearchViewModel.swift in Sources */,
