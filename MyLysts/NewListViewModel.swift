@@ -39,6 +39,21 @@ class NewListViewModel {
         }
     }
     
+    func deleteList(listId: String) {
+        let resource = createDeleteResource(listId: listId)
+        apiClient.load(resource: resource) { (_, _) in
+            
+        }
+    }
+    
+    private func createDeleteResource(listId: String) -> Resource<JSONDictionary> {
+        let url = URL(string: "http://www.mylysts.com/api/i/list/\(listId)/mod?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())")!
+        return Resource(url: url, method: .delete, parseJSON: { json in
+            guard let dictionaries = json as? JSONDictionary else { return nil }
+            return dictionaries
+        })
+    }
+    
     private func createGetByIdResource(id: String) -> Resource<JSONDictionary> {
         let url = URL(string: "http://www.mylysts.com/api/i/list/v/\(id)?apiKey=p8q937b32y2ef8sdyg&accessToken=\(User.currentUser!.getAccessToken())")!
         print(url.absoluteString)

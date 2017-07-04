@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Whisper
 
 class AllListsViewController: UIViewController, UIScrollViewDelegate {
     
@@ -83,14 +84,21 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchPublicLists() {
+        let errorMessage = Murmur(title: "Could not load lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
+
         viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                self.refreshControl.endRefreshing()
+                Whisper.show(whistle: errorMessage, action: .show(2.0))
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             self.allLists = listItems
@@ -99,14 +107,20 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func loadMorePublicLists() {
+        let errorMessage = Murmur(title: "Could not load more lists", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
         viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             let startIndex = self.allLists.count
@@ -171,20 +185,17 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
         cell.updateCell(listItem: allLists[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 120
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let list = allLists[indexPath.row]
-        let detailListVC = DetailListViewController(listId: list.id, title: list.title, description: list.description, imageUrl: list.imageURL ?? "")
+        let detailListVC = DetailListViewController(currentUserOwns: list.currentUserOwns, list: list)
         navigationController?.pushViewController(detailListVC, animated: true)
     }
 }

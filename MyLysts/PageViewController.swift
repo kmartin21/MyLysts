@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDelegate {
+class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDelegate, UIPopoverPresentationControllerDelegate {
     
     private let pageControl: PageControl
     private var scrollView: UIScrollView
@@ -20,10 +20,14 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
 
     init() {
         pageControl = PageControl(titles: ["All", "Mine"])
+        pageControl.stack?.tag = 1
         scrollView = UIScrollView()
         newListButton = UIButton(frame: .zero)
+        newListButton.tag = 1
         searchButton = UIButton(frame: .zero)
+        searchButton.tag = 1
         profileImageButton = UIButton(frame: .zero)
+        profileImageButton.tag = 1
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -42,12 +46,21 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let _ = navigationController?.navigationBar.subviews.map({ view in
+            if view.tag == 1 {
+                view.isHidden = false
+            }
+        })
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     func createUI() {
         view.backgroundColor = Color.white
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIView())
+        
+        scrollView.panGestureRecognizer.delaysTouchesBegan = true
+        scrollView.canCancelContentTouches = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
         scrollView.isPagingEnabled = true
@@ -58,11 +71,13 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         newListButton.addTarget(self, action: #selector(newListButtonTapped), for: .touchUpInside)
         
         searchButton.setImage(UIImage(named: "search"), for: .normal)
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         profileImageButton.kf.setImage(with: URL(string: User.currentUser!.profileImageUrl), for: .normal)
         profileImageButton.imageView?.contentMode = .scaleAspectFit
         profileImageButton.layer.cornerRadius = 0.5 * (navigationController!.navigationBar.frame.height/1.5)
         profileImageButton.clipsToBounds = true
+        profileImageButton.addTarget(self, action: #selector(profileImageButtonTapped), for: .touchUpInside)
         
         let navBar = navigationController?.navigationBar
         navBar?.addSubview(pageControl.stack!)
@@ -153,12 +168,57 @@ class PageViewController: UIViewController, UIScrollViewDelegate, PageControlDel
         }
     }
     
+    func profileImageButtonTapped(sender: UIButton) {
+        presentPopover()
+    }
+    
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        popoverPresentationController.barButtonItem = navigationItem.rightBarButtonItem
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    
+    func presentPopover() {
+        let popoverContentController = LogoutPopOverViewController()
+        popoverContentController.preferredContentSize = CGSize(width: 80, height: 50)
+        popoverContentController.modalPresentationStyle = .popover
+        popoverContentController.popoverPresentationController!.delegate = self
+        self.present(popoverContentController, animated: true, completion: nil)
+        popoverContentController.didLogout = {
+            DispatchQueue.main.async {
+                self.navigationController?.setViewControllers([LoginViewController()], animated: true)
+            }
+        }
+    }
+    
     func newListButtonTapped() {
         let newListVC = NewListViewController()
         present(newListVC, animated: true, completion: nil)
         let userListsVC = viewControllers[1] as! UserListsViewController
-        newListVC.didDismiss = {
+        newListVC.didDismiss = { _ in
             userListsVC.refreshList()
         }
+    }
+    
+    func searchButtonTapped() {
+        let searchVC = SearchViewController(style: .plain)
+        present(searchVC, animated: true, completion: nil)
+        searchVC.selectedList = { listItem in
+            let detailListVC = DetailListViewController(currentUserOwns: listItem.currentUserOwns, list: listItem)
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(detailListVC, animated: true)
+            }
+        }
+    }
+}
+
+extension UITableView {
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        super.touchesBegan(touches, with: event)
+        super.touchesEnded(touches, with: event)
     }
 }

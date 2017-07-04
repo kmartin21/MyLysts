@@ -83,24 +83,25 @@ class ListItemTableViewCell: UITableViewCell {
         imageImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         imageImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         imageImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        imageImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
         imageImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 15).isActive = true
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
         titleLabel.topAnchor.constraint(equalTo: imageImageView.topAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         descriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         authorLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         authorLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 15).isActive = true
         authorLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        authorLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
         numViewsLabel.translatesAutoresizingMaskIntoConstraints = false
         numViewsLabel.leftAnchor.constraint(equalTo: authorLabel.rightAnchor, constant: 20).isActive = true
@@ -115,7 +116,7 @@ class ListItemTableViewCell: UITableViewCell {
         numListsLabel.centerYAnchor.constraint(equalTo: numLinksLabel.centerYAnchor).isActive = true
     }
     
-    func updateCell(listItem: ListItem) {
+    func updateCell(privacy: Bool = false, listItem: ListItem) {
         if let imageURL = listItem.imageURL {
             let url = URL(string: imageURL)
             imageImageView.kf.setImage(with: url)
@@ -125,16 +126,16 @@ class ListItemTableViewCell: UITableViewCell {
         descriptionLabel.text = listItem.description
         authorLabel.text = "By \(listItem.author)"
         numViewsLabel.text = "\(listItem.numViews) Views"
-        if let numLinks = listItem.numLinks {
-            numLinksLabel.text = "\(numLinks) Links"
-        } else {
-            numLinksLabel.text = ""
-        }
-        if let numLists = listItem.numLists {
-            numListsLabel.text = "\(numLists) Lists"
-        } else {
+        guard privacy else {
+            if let numLinks = listItem.numLinks {
+                numLinksLabel.text = "\(numLinks) Links"
+            } else {
+                numLinksLabel.text = ""
+            }
             numListsLabel.text = ""
+            return
         }
+        numLinksLabel.text = listItem.privacy
     }
     
     func updateCell(listItem: DetailListItem) {
@@ -146,8 +147,7 @@ class ListItemTableViewCell: UITableViewCell {
         titleLabel.text = listItem.title
         descriptionLabel.text = listItem.description
         authorLabel.text = listItem.url
-        numViewsLabel.removeFromSuperview()
-        numLinksLabel.removeFromSuperview()
-        numListsLabel.removeFromSuperview()
+        authorLabel.lineBreakMode = .byTruncatingTail
+        authorLabel.widthAnchor.constraint(equalToConstant: contentView.frame.width - 40).isActive = true
     }
 }

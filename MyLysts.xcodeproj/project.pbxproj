@@ -22,10 +22,11 @@
 		E50CB8151F0A1ED5009C7B35 /* NewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */; };
 		E52ABF7D1F06AF7B001AF3C8 /* AllListsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52ABF7C1F06AF7B001AF3C8 /* AllListsViewModel.swift */; };
 		E57867091F0774F700D89AA6 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57867081F0774F700D89AA6 /* UIImageViewExtensions.swift */; };
+		E58ABE2D1F0B5E1B00AC0835 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABE2C1F0B5E1B00AC0835 /* SearchViewController.swift */; };
+		E58ABE2F1F0B5E8F00AC0835 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58ABE2E1F0B5E8F00AC0835 /* SearchViewModel.swift */; };
 		E5937E281F0A95CF00B1228E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E271F0A95CF00B1228E /* StringExtensions.swift */; };
 		E5937E2A1F0AAC5500B1228E /* DetailListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */; };
 		E5937E2E1F0AAE7D00B1228E /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */; };
-		E5937E301F0AAF7F00B1228E /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E2F1F0AAF7F00B1228E /* List.swift */; };
 		E5937E321F0AC6ED00B1228E /* DetailListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5937E311F0AC6ED00B1228E /* DetailListItem.swift */; };
 		E5995FA51F02D93B000136F7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5995FA41F02D93B000136F7 /* PageViewController.swift */; };
 		E5995FA91F02F271000136F7 /* UserListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5995FA81F02F271000136F7 /* UserListsViewController.swift */; };
@@ -55,6 +56,9 @@
 		E5EA4A271F05F54A004C9ADE /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A261F05F54A004C9ADE /* DefaultsKeys.swift */; };
 		E5EA4A2B1F06026F004C9ADE /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A2A1F06026F004C9ADE /* HttpMethod.swift */; };
 		E5EA4A2E1F060532004C9ADE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EA4A2D1F060532004C9ADE /* LoginViewModel.swift */; };
+		E5F636A41F0B783700C0A0FE /* LogoutPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */; };
+		E5FCA30C1F0AEBF40056BD94 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA30B1F0AEBF40056BD94 /* UILabelExtensions.swift */; };
+		E5FCA30E1F0AF85D0056BD94 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,10 +99,11 @@
 		E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListViewModel.swift; sourceTree = "<group>"; };
 		E52ABF7C1F06AF7B001AF3C8 /* AllListsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewModel.swift; sourceTree = "<group>"; };
 		E57867081F0774F700D89AA6 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		E58ABE2C1F0B5E1B00AC0835 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E58ABE2E1F0B5E8F00AC0835 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E5937E271F0A95CF00B1228E /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewModel.swift; sourceTree = "<group>"; };
 		E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
-		E5937E2F1F0AAF7F00B1228E /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		E5937E311F0AC6ED00B1228E /* DetailListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListItem.swift; sourceTree = "<group>"; };
 		E5995FA41F02D93B000136F7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		E5995FA81F02F271000136F7 /* UserListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListsViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +138,9 @@
 		E5EA4A261F05F54A004C9ADE /* DefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		E5EA4A2A1F06026F004C9ADE /* HttpMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		E5EA4A2D1F060532004C9ADE /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutPopOverViewController.swift; sourceTree = "<group>"; };
+		E5FCA30B1F0AEBF40056BD94 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		ED0DCA3DE4EEB106998C2FA8 /* Pods-MyLysts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLysts.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts.release.xcconfig"; sourceTree = "<group>"; };
 		F1E7678530BAAF57908B5497 /* Pods-MyLysts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyLysts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyLysts/Pods-MyLysts.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +205,7 @@
 				E50CB80E1F09C7E9009C7B35 /* UITextFieldExtensions.swift */,
 				E50CB8121F0A15B7009C7B35 /* UIButtonExtensions.swift */,
 				E5937E271F0A95CF00B1228E /* StringExtensions.swift */,
+				E5FCA30B1F0AEBF40056BD94 /* UILabelExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +322,9 @@
 				E5995FA81F02F271000136F7 /* UserListsViewController.swift */,
 				E50CB8081F09AAAC009C7B35 /* NewListViewController.swift */,
 				E5937E2D1F0AAE7D00B1228E /* DetailListViewController.swift */,
+				E5FCA30D1F0AF85C0056BD94 /* WebViewController.swift */,
+				E58ABE2C1F0B5E1B00AC0835 /* SearchViewController.swift */,
+				E5F636A31F0B783700C0A0FE /* LogoutPopOverViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -349,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				E5EA4A1A1F04849C004C9ADE /* ListItem.swift */,
-				E5937E2F1F0AAF7F00B1228E /* List.swift */,
 				E5937E311F0AC6ED00B1228E /* DetailListItem.swift */,
 			);
 			name = Lists;
@@ -363,6 +374,7 @@
 				E50CB8031F095078009C7B35 /* UserListsViewModel.swift */,
 				E50CB8141F0A1ED5009C7B35 /* NewListViewModel.swift */,
 				E5937E291F0AAC5500B1228E /* DetailListViewModel.swift */,
+				E58ABE2E1F0B5E8F00AC0835 /* SearchViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -665,6 +677,7 @@
 				E5EA4A1B1F04849C004C9ADE /* ListItem.swift in Sources */,
 				E5EA4A1D1F054B4D004C9ADE /* Resource.swift in Sources */,
 				E5EA4A191F04846D004C9ADE /* ListItemTableViewCell.swift in Sources */,
+				E58ABE2D1F0B5E1B00AC0835 /* SearchViewController.swift in Sources */,
 				E5D33F0B1EFB91AE001D9480 /* AllListsViewController.swift in Sources */,
 				E5EA4A2B1F06026F004C9ADE /* HttpMethod.swift in Sources */,
 				E5EA4A271F05F54A004C9ADE /* DefaultsKeys.swift in Sources */,
@@ -676,16 +689,19 @@
 				E5EA4A251F05F420004C9ADE /* User.swift in Sources */,
 				E52ABF7D1F06AF7B001AF3C8 /* AllListsViewModel.swift in Sources */,
 				E5D33EC71EFB43E4001D9480 /* LoginViewController.swift in Sources */,
+				E5F636A41F0B783700C0A0FE /* LogoutPopOverViewController.swift in Sources */,
+				E5FCA30C1F0AEBF40056BD94 /* UILabelExtensions.swift in Sources */,
 				E50CB8131F0A15B7009C7B35 /* UIButtonExtensions.swift in Sources */,
+				E58ABE2F1F0B5E8F00AC0835 /* SearchViewModel.swift in Sources */,
 				E5D33EFB1EFB54F8001D9480 /* Color.swift in Sources */,
 				E5937E321F0AC6ED00B1228E /* DetailListItem.swift in Sources */,
+				E5FCA30E1F0AF85D0056BD94 /* WebViewController.swift in Sources */,
 				E5EA4A211F054CC3004C9ADE /* JSONDecodable.swift in Sources */,
 				E50CB80D1F09AE61009C7B35 /* NewListItemTableViewCell.swift in Sources */,
 				E5DAB9EE1F0843AA00E8ECBB /* PagingParams.swift in Sources */,
 				E5995FA91F02F271000136F7 /* UserListsViewController.swift in Sources */,
 				E5D33EC51EFB43E4001D9480 /* AppDelegate.swift in Sources */,
 				E50CB8071F098781009C7B35 /* EmptyUserListsTableView.swift in Sources */,
-				E5937E301F0AAF7F00B1228E /* List.swift in Sources */,
 				E50CB8091F09AAAC009C7B35 /* NewListViewController.swift in Sources */,
 				E5937E281F0A95CF00B1228E /* StringExtensions.swift in Sources */,
 				E5995FAD1F035886000136F7 /* PageControl.swift in Sources */,
