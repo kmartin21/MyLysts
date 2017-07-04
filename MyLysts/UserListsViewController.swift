@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserListsViewController: UIViewController, UIScrollViewDelegate {
+class UserListsViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     private let viewModel: UserListsViewModel
     private let tableView: UITableView
@@ -63,7 +63,7 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
         
         emptyUserListsTableView = EmptyUserListsTableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         emptyUserListsTableView.getCreateListButton().addTarget(self, action: #selector(createListButtonTapped), for: .touchUpInside)
-        
+                
         refreshList()
         addConstraints()
     }
@@ -145,7 +145,7 @@ class UserListsViewController: UIViewController, UIScrollViewDelegate {
     func createListButtonTapped(sender: UIButton) {
         let newListVC = NewListViewController()
         self.present(NewListViewController(), animated: true, completion: nil)
-        newListVC.didDismiss = {
+        newListVC.didDismiss = { _ in
             self.refreshList()
         }
     }
@@ -189,6 +189,7 @@ extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
         cell.updateCell(listItem: userLists[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -201,8 +202,8 @@ extension UserListsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let listItem = userLists[indexPath.row]
-        let newListVC = NewListViewController(listId: listItem.id)
-        present(newListVC, animated: true, completion: nil)
+        let list = userLists[indexPath.row]
+        let detailListVC = DetailListViewController(currentUserOwns: list.currentUserOwns, list: list)
+        navigationController?.pushViewController(detailListVC, animated: true)
     }
 }

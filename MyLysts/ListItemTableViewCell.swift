@@ -90,17 +90,19 @@ class ListItemTableViewCell: UITableViewCell {
         titleLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
         titleLabel.topAnchor.constraint(equalTo: imageImageView.topAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         descriptionLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 10).isActive = true
+        descriptionLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
         authorLabel.leftAnchor.constraint(equalTo: imageImageView.rightAnchor, constant: 10).isActive = true
         authorLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 15).isActive = true
         authorLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        authorLabel.heightAnchor.constraint(equalToConstant: 10).isActive = true
         
         numViewsLabel.translatesAutoresizingMaskIntoConstraints = false
         numViewsLabel.leftAnchor.constraint(equalTo: authorLabel.rightAnchor, constant: 20).isActive = true

@@ -26,6 +26,7 @@ class AllListsViewModel {
             resource = ListItem.all
         }
         apiClient.load(resource: resource) { (dictionaries, error) in
+            print(error)
             guard error == nil else {
                 completion(nil, error, self.pagingParams.canLoadMore())
                 return

@@ -11,7 +11,9 @@ import Foundation
 struct ListItem {
     
     let imageURL: String?
+    let privacy: String
     let id: String
+    let currentUserOwns: Bool
     let title: String
     let description: String
     let author: String
@@ -25,10 +27,14 @@ extension ListItem: JSONDecodable {
     
     init?(value: JSONDictionary, references: JSONDictionary) {
         guard let id = value["id"] as? String,
+            let privacy = value["privacy"] as? String,
             let userId = value["userId"] as? String,
             let users = references["users"] as? JSONDictionary,
             let itemCounts = value["itemCounts"] as? JSONDictionary else { return nil }
+        
         self.id = id
+        self.privacy = privacy
+        self.currentUserOwns = userId == User.currentUser?.getUserId()
         self.imageURL = value["imageUrl"] as? String
         self.title = value["title"] as? String ?? ""
         self.description = value["description"] as? String ?? ""

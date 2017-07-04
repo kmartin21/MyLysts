@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
         
         GIDSignIn.sharedInstance().clientID = "1080273992297-bl7rgf3chvqjsilm9b1eudkmgbt0gleb.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().serverClientID = "1080273992297-m2n0djmmru3hr3q3b209cj86ti46cge2.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().serverClientID = "1080273992297-m2n0djmmru3hr3q3b209cj86ti46cge2.apps.googleusercontent.com"        
+
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             window?.makeKeyAndVisible()
             //let defaults = UserDefaults.standard

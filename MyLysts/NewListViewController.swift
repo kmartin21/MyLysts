@@ -25,11 +25,12 @@ class NewListViewController: UIViewController {
     private let publicListButton: UIButton
     private let unlistedListButton: UIButton
     private let privateListButton: UIButton
+    private let deleteListButton: UIButton
     private var currentListId: String = ""
-    var didDismiss: (() -> ())?
-    private var listId: String?
+    var didDismiss: ((_ deleted: Bool) -> ())?
+    fileprivate var list: ListItem?
     
-    init(listId: String? = nil) {
+    init(list: ListItem? = nil) {
         viewModel = NewListViewModel()
         closeButton = UIButton(frame: .zero)
         createButton = UIButton(frame: .zero)
@@ -42,9 +43,8 @@ class NewListViewController: UIViewController {
         publicListButton = UIButton(frame: .zero)
         unlistedListButton = UIButton(frame: .zero)
         privateListButton = UIButton(frame: .zero)
-        if let id = listId {
-            self.listId = id
-        }
+        deleteListButton = UIButton(frame: .zero)
+        self.list = list
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,8 +56,8 @@ class NewListViewController: UIViewController {
         super.viewDidLoad()
 
         createUI()
-        if listId != nil {
-            loadListById()
+        if let list = list {
+            setupList()
         }
     }
 
@@ -75,7 +75,7 @@ class NewListViewController: UIViewController {
         
         createButton.setTitle("Save", for: .normal)
         createButton.setTitleColor(Color.lightBlack, for: .normal)
-        createButton.addTarget(self, action: #selector(SaveButtonTapped), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         view.addSubview(createButton)
         
         tableView.delegate = self
@@ -100,7 +100,11 @@ class NewListViewController: UIViewController {
         listImageUrlTextField.attributedPlaceholder = NSAttributedString(string: "List Image Url - e.g. coolwebsite.com/image.png", attributes: [NSForegroundColorAttributeName : Color.lightGrey])
         headerView.addSubview(listImageUrlTextField)
         
-        createButtons()
+        if let _ = list {
+            createDeleteButton()
+        } else {
+            createButtons()
+        }
         
         footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 80))
         footerView.backgroundColor = Color.white
@@ -144,6 +148,20 @@ class NewListViewController: UIViewController {
         privateListButton.setTitle("Private", for: .normal)
         privateListButton.addTarget(self, action: #selector(listPrivacyButtonTapped), for: .touchUpInside)
         headerView.addSubview(privateListButton)
+        
+        addButtonConstraints()
+    }
+    
+    func createDeleteButton() {
+        deleteListButton.createOvalButton()
+        deleteListButton.backgroundColor = Color.white
+        deleteListButton.setTitleColor(UIColor.red, for: .normal)
+        deleteListButton.layer.borderColor = Color.lightGrey.cgColor
+        deleteListButton.setTitle("Delete", for: .normal)
+        deleteListButton.addTarget(self, action: #selector(deleteListButtonTapped), for: .touchUpInside)
+        headerView.addSubview(deleteListButton)
+        
+        addDeleteButtonConstraints()
     }
     
     func addConstraints() {
@@ -181,6 +199,18 @@ class NewListViewController: UIViewController {
         listImageUrlTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         listImageUrlTextField.topAnchor.constraint(equalTo: listDescriptionTextField.bottomAnchor, constant: 20).isActive = true
         
+        addListItemButton.translatesAutoresizingMaskIntoConstraints = false
+        addListItemButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        addListItemButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        addListItemButton.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
+        addListItemButton.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+        
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+    }
+    
+    func addButtonConstraints() {
         let buttonWidth = (view.frame.width - 60)/3
         publicListButton.translatesAutoresizingMaskIntoConstraints = false
         publicListButton.topAnchor.constraint(equalTo: listImageUrlTextField.bottomAnchor, constant: 20).isActive = true
@@ -199,16 +229,14 @@ class NewListViewController: UIViewController {
         privateListButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         privateListButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         privateListButton.leftAnchor.constraint(equalTo: unlistedListButton.rightAnchor, constant: 10).isActive = true
-        
-        addListItemButton.translatesAutoresizingMaskIntoConstraints = false
-        addListItemButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        addListItemButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        addListItemButton.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
-        addListItemButton.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
-        
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicatorView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor).isActive = true
+    }
+    
+    func addDeleteButtonConstraints() {
+        deleteListButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteListButton.topAnchor.constraint(equalTo: listImageUrlTextField.bottomAnchor, constant: 20).isActive = true
+        deleteListButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        deleteListButton.widthAnchor.constraint(equalToConstant: view.frame.width - 40).isActive = true
+        deleteListButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
     }
     
     func addListItemButtonTapped(sender: UIButton) {
@@ -239,11 +267,12 @@ class NewListViewController: UIViewController {
         }
     }
     
-    func loadListById() {
-        viewModel.fetchList(id: listId!) { (list, error) in
-            print(list)
-            print(error)
-        }
+    func setupList() {
+        listTitleTextField.text = list!.title
+        listDescriptionTextField.text = list!.description
+        listTitleTextField.allowsEditingTextAttributes = false
+        listDescriptionTextField.allowsEditingTextAttributes = false
+        listItems.append(["":""])
     }
     
     func createNewList(save: Bool, listInfo: [String: String]) {
@@ -286,12 +315,15 @@ class NewListViewController: UIViewController {
     }
     
     func closeButtonTapped(sender: UIButton) {
+        if !currentListId.isEmpty {
+            viewModel.deleteList(listId: currentListId)
+        }
         dismiss(animated: true, completion: nil)
     }
     
-    func SaveButtonTapped(sender: UIButton) {
+    func saveButtonTapped(sender: UIButton) {
         guard saveList() else {return}
-        didDismiss?()
+        didDismiss?(false)
         dismiss(animated: true, completion: nil)
     }
     
@@ -348,6 +380,31 @@ class NewListViewController: UIViewController {
         }
     }
     
+    func deleteListButtonTapped(sender: UIButton) {
+        viewModel.deleteList(listId: list!.id)
+        didDismiss?(true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func setSelected(privacy: String) {
+        switch privacy {
+        case "public":
+            publicListButton.isSelected = true
+            unlistedListButton.isSelected = false
+            privateListButton.isSelected = false
+        case "unlisted":
+            unlistedListButton.isSelected = true
+            publicListButton.isSelected = false
+            privateListButton.isSelected = false
+        case "private":
+            privateListButton.isSelected = true
+            publicListButton.isSelected = false
+            unlistedListButton.isSelected = false
+        default:
+            return
+        }
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -368,6 +425,7 @@ extension NewListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! NewListItemTableViewCell
+        cell.selectionStyle = .none
         return cell
     }
     

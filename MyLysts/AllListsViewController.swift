@@ -86,11 +86,16 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         viewModel.fetchPublicLists(loadMore: false) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                self.refreshControl.endRefreshing()
+                print(error!.localizedDescription)
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             self.allLists = listItems
@@ -102,11 +107,15 @@ class AllListsViewController: UIViewController, UIScrollViewDelegate {
         viewModel.fetchPublicLists(loadMore: true) { (listItems, error, canLoadMore) in
             self.canLoadMore = canLoadMore
             guard error == nil else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             guard let listItems = listItems else {
-                self.refreshControl.endRefreshing()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
                 return
             }
             let startIndex = self.allLists.count
@@ -171,6 +180,7 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ListItemTableViewCell
         cell.updateCell(listItem: allLists[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -184,7 +194,7 @@ extension AllListsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let list = allLists[indexPath.row]
-        let detailListVC = DetailListViewController(listId: list.id, title: list.title, description: list.description, imageUrl: list.imageURL ?? "")
+        let detailListVC = DetailListViewController(currentUserOwns: list.currentUserOwns, list: list)
         navigationController?.pushViewController(detailListVC, animated: true)
     }
 }
