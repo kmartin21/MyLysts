@@ -208,8 +208,8 @@ class DetailListViewController: UIViewController, UIScrollViewDelegate {
         viewModel.deleteListItem(listId: listId, listItemId: listItemId) { error in
             guard error == nil else {
                 let errorMessage = Murmur(title: "Could not delete list item", backgroundColor: UIColor.red, titleColor: Color.white, font: TextFont.descriptionSmall, action: nil)
-                Whisper.show(whistle: errorMessage, action: .show(2.0))
                 DispatchQueue.main.async {
+                    Whisper.show(whistle: errorMessage, action: .show(2.0))
                     self.loadingActivityIndicator.stopAnimating()
                 }
                 return
